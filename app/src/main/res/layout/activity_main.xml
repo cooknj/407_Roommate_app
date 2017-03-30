@@ -10,7 +10,7 @@
         android:id="@+id/bulletinBoardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Bulletin Board"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="70dp" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/calendarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Calendar"
         tools:layout_editor_absoluteX="230dp"
         tools:layout_editor_absoluteY="70dp" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/scheduleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Schedule"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="198dp" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/whiteBoardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="WhiteBoard"
         tools:layout_editor_absoluteX="230dp"
         tools:layout_editor_absoluteY="198dp" />
 
@@ -42,7 +42,7 @@
         android:id="@+id/choresButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Chores"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="340dp" />
 
@@ -50,7 +50,7 @@
         android:id="@+id/billsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Bills"
         tools:layout_editor_absoluteX="230dp"
         tools:layout_editor_absoluteY="340dp" />
 
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="Button"
+        android:text="Home"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="0dp" />
