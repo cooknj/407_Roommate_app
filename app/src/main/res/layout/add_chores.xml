@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            tools:layout_editor_absoluteX="280dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="171dp"
+            android:layout_height="40dp"
+            android:fontFamily="casual"
+            android:text="Add A Chore"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="24dp" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <EditText
+            android:id="@+id/assignedToText"
+            android:layout_width="352dp"
+            android:layout_height="58dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Assigned To"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="184dp" />
+
+        <EditText
+            android:id="@+id/choreNameText"
+            android:layout_width="352dp"
+            android:layout_height="58dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Chore Name"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="96dp" />
+
+        <Button
+            android:id="@+id/addChoreButton"
+            android:layout_width="145dp"
+            android:layout_height="69dp"
+            android:text="Add Chore"
+            tools:layout_editor_absoluteX="120dp"
+            tools:layout_editor_absoluteY="270dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
