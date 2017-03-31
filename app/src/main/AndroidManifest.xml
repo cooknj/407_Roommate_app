@@ -16,6 +16,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ScheduleActivity">
+
+        </activity>
+
+        <activity android:name=".ScheduleEntryActivity">
+
+        </activity>
+
+        <activity android:name=".ChoresActivity">
+
+        </activity>
+
+        <activity android:name=".CompletedChoresActivity">
+
+        </activity>
+
+        <activity android:name=".AddChoresActivity">
+
+        </activity>
+
+        <activity android:name=".MyChoresActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
