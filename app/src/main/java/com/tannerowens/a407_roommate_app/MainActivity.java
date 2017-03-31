@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this, BulletinBoardActivity.class);
+                Intent intent = new Intent(MainActivity.this, BulletinBoardActivity.class);
                 startActivity(intent);
                 //finish();  I think finish might end the activity which in this case we dont want to do
             }
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this, OurCalendarActivity.class);
+                Intent intent = new Intent(MainActivity.this, OurCalendarActivity.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this, ChoresActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChoresActivity.class);
                 startActivity(intent);
             }
         });
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this, ScheduleActivity.class);
+                Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
                 startActivity(intent);
             }
         });
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this, WhiteBoardActivity.class);
+                Intent intent = new Intent(MainActivity.this, WhiteBoardActivity.class);
                 startActivity(intent);
             }
         });
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this, BillsActivity.class);
+                Intent intent = new Intent(MainActivity.this, BillsActivity.class);
                 startActivity(intent);
             }
         });
