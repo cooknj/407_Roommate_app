@@ -9,6 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="100dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:inputType="textPersonName|time"
+            android:text="enter day"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:layout_editor_absoluteX="129dp"
+            tools:layout_editor_absoluteY="231dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="99dp"
+            android:layout_height="39dp"
+            android:fontFamily="casual"
+            android:text="DAY:"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="236dp" />
+
         <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
@@ -47,7 +69,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="175dp" />
+            tools:layout_editor_absoluteY="170dp" />
 
         <EditText
             android:id="@+id/entryDescription"
@@ -73,8 +95,8 @@
             android:layout_width="104dp"
             android:layout_height="66dp"
             android:text="add activity"
-            tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="222dp" />
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="304dp" />
 
         <EditText
             android:id="@+id/endTime"
@@ -84,7 +106,7 @@
             android:inputType="textPersonName|time"
             android:text="END"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            tools:layout_editor_absoluteX="291dp"
+            tools:layout_editor_absoluteX="287dp"
             tools:layout_editor_absoluteY="170dp" />
 
         <EditText

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bulletin Board"
-        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteX="39dp"
         tools:layout_editor_absoluteY="70dp" />
 
     <Button
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Schedule"
-        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="198dp" />
 
     <Button
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="WhiteBoard"
-        tools:layout_editor_absoluteX="230dp"
+        tools:layout_editor_absoluteX="219dp"
         tools:layout_editor_absoluteY="198dp" />
 
     <Button
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chores"
-        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="340dp" />
 
     <Button
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bills"
-        tools:layout_editor_absoluteX="230dp"
+        tools:layout_editor_absoluteX="237dp"
         tools:layout_editor_absoluteY="340dp" />
 
     <Button
@@ -63,6 +63,7 @@
         android:text="Home"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="5dp"
+        app:layout_constraintHorizontal_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
