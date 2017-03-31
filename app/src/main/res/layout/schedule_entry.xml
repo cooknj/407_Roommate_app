@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/day"
             android:layout_width="100dp"
             android:layout_height="46dp"
             android:ems="10"
@@ -79,7 +79,7 @@
             android:inputType="text|textPersonName"
             android:text="Description:"
             tools:layout_editor_absoluteX="54dp"
-            tools:layout_editor_absoluteY="75dp" />
+            tools:layout_editor_absoluteY="71dp" />
 
         <TextView
             android:id="@+id/time1"

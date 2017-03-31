@@ -15,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configureHomeButton();
-        configureBillsButton();
-        configureBulletinBoardButton();
-        configureCalendarButton();
+        //configureBillsButton();
+        //configureBulletinBoardButton();
+        //configureCalendarButton();
         configureChoresButton();
         configureScheduleButton();
-        configureWhiteBoardButton();
+        //configureWhiteBoardButton();
     }
 
     private void configureHomeButton() {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void configureBulletinBoardButton() {
+/*    private void configureBulletinBoardButton() {
         Button button = (Button) findViewById(R.id.bulletinBoardButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 
     private void configureChoresButton() {
         Button button = (Button) findViewById(R.id.choresButton);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void configureWhiteBoardButton() {
+/*    private void configureWhiteBoardButton() {
         Button button = (Button) findViewById(R.id.whiteBoardButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,5 +98,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 }

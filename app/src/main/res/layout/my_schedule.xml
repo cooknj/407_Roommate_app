@@ -64,6 +64,62 @@
 
                     <TableRow
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="TIME" />
+
+                        <TextView
+                            android:id="@+id/SUN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SUNDAY" />
+
+                        <TextView
+                            android:id="@+id/MON"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MONDAY" />
+
+                        <TextView
+                            android:id="@+id/TUES"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TUESDAY" />
+
+                        <TextView
+                            android:id="@+id/WED"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="WEDNESDAY" />
+
+                        <TextView
+                            android:id="@+id/THURS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="THURSDAY" />
+
+                        <TextView
+                            android:id="@+id/FRI"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FRIDAY" />
+
+                        <TextView
+                            android:id="@+id/SAT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="SATURDAY" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:visibility="visible">
@@ -77,42 +133,45 @@
                         <TextView
                             android:id="@+id/SUN6am"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/MON6am"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/TUES6am"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/WED6am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/THURS6am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/FRI6am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/SAT6am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
-                            android:text="6:00" />
+                            android:text="" />
                     </TableRow>
 
                     <TableRow
@@ -129,19 +188,20 @@
                         <TextView
                             android:id="@+id/SUN7am"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/MON7am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/TUES7am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/WED7am"
@@ -152,19 +212,19 @@
                             android:id="@+id/THURS7am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/FRI7am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/SAT7am"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                     </TableRow>
 
@@ -182,30 +242,32 @@
                         <TextView
                             android:id="@+id/textView20"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/textView21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView23"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/textView24"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView25"
@@ -216,7 +278,7 @@
                             android:id="@+id/textView26"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
                     </TableRow>
 
                     <TableRow
@@ -234,19 +296,19 @@
                             android:id="@+id/textView28"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/textView29"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView30"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView31"
@@ -257,7 +319,7 @@
                             android:id="@+id/textView32"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView33"
@@ -268,7 +330,7 @@
                             android:id="@+id/textView34"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="" />
                     </TableRow>
 
                     <TableRow
@@ -321,6 +383,431 @@
                             android:layout_height="wrap_content"
                             android:text="TextView" />
                     </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME11am"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="11:00" />
+
+                        <TextView
+                            android:id="@+id/SUN11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT11am"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME12pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="12:00" />
+
+                        <TextView
+                            android:id="@+id/SUN12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT12pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME1pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="1:00" />
+
+                        <TextView
+                            android:id="@+id/SUN1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT1pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME2pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="2:00" />
+
+                        <TextView
+                            android:id="@+id/SUN2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT2pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME3pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="3:00" />
+
+                        <TextView
+                            android:id="@+id/SUN3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT3pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME4pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="4:00" />
+
+                        <TextView
+                            android:id="@+id/SUN4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT4pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME5pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="5:00" />
+
+                        <TextView
+                            android:id="@+id/SUN5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT5pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TIME6pm"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:text="6:00" />
+
+                        <TextView
+                            android:id="@+id/SUN6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/MON6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/TUES6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/WED6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/THURS6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/FRI6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+
+                        <TextView
+                            android:id="@+id/SAT6pm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:text="6:00" />
+                    </TableRow>
+
                 </TableLayout>
             </LinearLayout>
         </HorizontalScrollView>
