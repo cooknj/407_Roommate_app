@@ -6,34 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import static com.tannerowens.a407_roommate_app.R.id.homeButton;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        configureHomeButton();
         //configureBillsButton();
         //configureBulletinBoardButton();
-        //configureCalendarButton();
+        configureCalendarButton();
         configureChoresButton();
         configureScheduleButton();
         //configureWhiteBoardButton();
     }
 
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
 
-/*    private void configureBulletinBoardButton() {
+    /*private void configureBulletinBoardButton() {
         Button button = (Button) findViewById(R.id.bulletinBoardButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 //finish();  I think finish might end the activity which in this case we dont want to do
             }
         });
-    }
+    }*/
 
     private void configureCalendarButton() {
         Button button = (Button) findViewById(R.id.calendarButton);
@@ -54,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }*/
+    }
 
     private void configureChoresButton() {
         Button button = (Button) findViewById(R.id.choresButton);

@@ -8,7 +8,6 @@ import android.widget.Button;
 
 import static com.tannerowens.a407_roommate_app.R.id.addChores;
 import static com.tannerowens.a407_roommate_app.R.id.completedChores;
-import static com.tannerowens.a407_roommate_app.R.id.homeButton;
 import static com.tannerowens.a407_roommate_app.R.id.myChores;
 
 /**
@@ -21,21 +20,9 @@ public class ChoresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chores_main);
 
-        configureHomeButton();
         configureMyChoresButton();
         configureCompletedChoresButton();
         configureAddChoresButton();
-    }
-
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void configureMyChoresButton() {

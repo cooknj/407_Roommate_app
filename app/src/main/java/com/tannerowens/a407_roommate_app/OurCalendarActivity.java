@@ -2,14 +2,10 @@ package com.tannerowens.a407_roommate_app;
 
 
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
 import android.widget.Toast;
-import static com.tannerowens.a407_roommate_app.R.id.homeButton;
 
 public class OurCalendarActivity extends AppCompatActivity {
 
@@ -28,20 +24,6 @@ public class OurCalendarActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
             }
         });
-
-        configureHomeButton();
-
-
     }
 
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 }

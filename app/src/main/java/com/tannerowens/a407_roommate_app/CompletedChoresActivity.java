@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import static com.tannerowens.a407_roommate_app.R.id.backButton;
-import static com.tannerowens.a407_roommate_app.R.id.homeButton;
 
 /**
  * Created by Nick on 3/30/2017.
@@ -19,20 +18,7 @@ public class CompletedChoresActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.completed_chores);
 
-        configureHomeButton();
         configureBackButton();
-    }
-
-    //home button configuration (back to main activity)
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //back button config (back to chores activity)

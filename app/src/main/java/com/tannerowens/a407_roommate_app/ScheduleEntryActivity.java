@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import static com.tannerowens.a407_roommate_app.R.id.homeButton;
-
 /**
  * Created by Tanner on 3/30/2017.
  */
@@ -20,19 +18,8 @@ public class ScheduleEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_entry);
 
-        configureHomeButton();
         configureBackButton();
         configureAddActivityButton();
-    }
-
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureBackButton() {
