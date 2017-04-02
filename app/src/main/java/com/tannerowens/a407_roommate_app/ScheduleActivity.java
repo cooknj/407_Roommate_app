@@ -18,19 +18,8 @@ public class ScheduleActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_schedule);
 
-        configureHomeButton();
         configureAddActivityButton();
         configureBackButton();
-    }
-
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(R.id.homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     private void configureBackButton() {
