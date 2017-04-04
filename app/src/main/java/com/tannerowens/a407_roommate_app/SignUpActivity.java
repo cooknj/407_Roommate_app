@@ -50,10 +50,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         };
 
-        /*mDatabase.child("account").child("username").setValue(e);
-                mDatabase.child("account").child("password").setValue(p);
-                finish();*/
-
         signIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
