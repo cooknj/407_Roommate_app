@@ -3,6 +3,7 @@
     package="com.tannerowens.a407_roommate_app">
 
     <application
+        android:name=".RoommateApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,35 +17,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".OurCalendarActivity">
-
-        </activity>
-
-        <activity android:name=".ScheduleActivity">
-
-        </activity>
-
-        <activity android:name=".ScheduleEntryActivity">
-
-        </activity>
-
-        <activity android:name=".ChoresActivity">
-
-        </activity>
-
-        <activity android:name=".CompletedChoresActivity">
-
-        </activity>
-
-        <activity android:name=".AddChoresActivity">
-
-        </activity>
-
-        <activity android:name=".MyChoresActivity">
-
-        </activity>
-
+        <activity android:name=".OurCalendarActivity" />
+        <activity android:name=".ScheduleActivity" />
+        <activity android:name=".ScheduleEntryActivity" />
+        <activity android:name=".ChoresActivity" />
+        <activity android:name=".CompletedChoresActivity" />
+        <activity android:name=".AddChoresActivity" />
+        <activity android:name=".MyChoresActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
