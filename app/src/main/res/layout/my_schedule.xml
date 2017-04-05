@@ -18,47 +18,47 @@
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="4dp"
                 android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                android:layout_marginTop="4dp"
+                android:text="Back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="171dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="107dp"
+                android:layout_marginTop="6dp"
                 android:fontFamily="casual"
                 android:text="My Schedule"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="6dp"
-                android:layout_marginLeft="107dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Home"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="@+id/backButton"
-                app:layout_constraintHorizontal_bias="1.0" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
         <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
             android:layout_width="match_parent"
             android:layout_height="378dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/constraintLayout"
-            android:id="@+id/horizontalScrollView">
+            android:layout_below="@+id/constraintLayout">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                 <TableLayout
                     android:id="@+id/tableLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="421dp"
+                    android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/constraintLayout">
 
@@ -80,52 +80,67 @@
 
                         <TextView
                             android:id="@+id/TIME"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="TIME" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/schedule_border"
+                            android:text="TIME"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SUNDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="SUNDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/MON"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="MONDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="MONDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/TUES"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TUESDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="TUESDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/WED"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="WEDNESDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="WEDNESDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/THURS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="THURSDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="THURSDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/FRI"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="FRIDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="FRIDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SAT"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:text="SATURDAY" />
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/schedule_border"
+                            android:text="SATURDAY"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </TableRow>
 
                     <TableRow
@@ -136,51 +151,52 @@
 
                         <TextView
                             android:id="@+id/TIME6am"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="6:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/schedule_border"
+                            android:text="6:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/SUN6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/MON6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text=""
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/TUES6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/WED6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/THURS6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/FRI6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
-                        <TextView
+                        <Button
                             android:id="@+id/SAT6am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
                     </TableRow>
 
@@ -190,50 +206,50 @@
 
                         <TextView
                             android:id="@+id/TIME7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:text="7:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="7:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/SUN7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/MON7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/TUES7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/WED7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/THURS7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/FRI7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
-                        <TextView
+                        <ImageButton
                             android:id="@+id/SAT7am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="" />
 
                     </TableRow>
@@ -244,16 +260,16 @@
 
                         <TextView
                             android:id="@+id/TIME8am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:text="8:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="8:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/textView20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView21"
@@ -271,7 +287,7 @@
                             android:id="@+id/textView23"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView24"
@@ -297,16 +313,16 @@
 
                         <TextView
                             android:id="@+id/TIME9am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:text="9:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="9:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/textView28"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=""/>
+                            android:text="" />
 
                         <TextView
                             android:id="@+id/textView29"
@@ -349,10 +365,10 @@
 
                         <TextView
                             android:id="@+id/TIME10am"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:text="10:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="10:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/textView36"
@@ -402,9 +418,10 @@
 
                         <TextView
                             android:id="@+id/TIME11am"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="11:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="11:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN11am"
@@ -455,9 +472,10 @@
 
                         <TextView
                             android:id="@+id/TIME12pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="12:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="12:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN12pm"
@@ -508,9 +526,10 @@
 
                         <TextView
                             android:id="@+id/TIME1pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="1:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="1:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN1pm"
@@ -561,9 +580,10 @@
 
                         <TextView
                             android:id="@+id/TIME2pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="2:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="2:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN2pm"
@@ -614,9 +634,10 @@
 
                         <TextView
                             android:id="@+id/TIME3pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="3:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="3:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN3pm"
@@ -667,9 +688,10 @@
 
                         <TextView
                             android:id="@+id/TIME4pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="4:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="4:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN4pm"
@@ -720,9 +742,10 @@
 
                         <TextView
                             android:id="@+id/TIME5pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="5:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="5:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN5pm"
@@ -773,9 +796,10 @@
 
                         <TextView
                             android:id="@+id/TIME6pm"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:text="6:00" />
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="6:00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
                             android:id="@+id/SUN6pm"
@@ -826,9 +850,9 @@
             android:id="@+id/addActivityButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Activity"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:text="Add Activity" />
 
     </RelativeLayout>
 
