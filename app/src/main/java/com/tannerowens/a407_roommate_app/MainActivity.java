@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseReference fire;
-    private TextView email;
+    private DatabaseReference mDatabase;
+    private TextView nameText;
     private FirebaseAuth mAuth;
+    private String email;
+    private String name;
 
 
     @Override
@@ -22,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = (TextView) findViewById(R.id.email);
+        nameText = (TextView) findViewById(R.id.nameText);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
 
         /*/////////////////TESTING FIREBASE DATABASE////////////////////////////
         username = (TextView) findViewById(R.id.email);
@@ -52,13 +56,16 @@ public class MainActivity extends AppCompatActivity {
         configureChoresButton();
         configureScheduleButton();
         configureSignOutButton();
+        configurePickHouseButton();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1){
             if(resultCode == 1){
-                email.setText(data.getStringExtra("email"));
+                email = data.getStringExtra("email");
+                name = data.getStringExtra("name");
+                nameText.setText(name);
             }
             else{
                 Intent i = new Intent(MainActivity.this, SignUpActivity.class);
@@ -144,4 +151,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void configurePickHouseButton(){
+        Button button = (Button) findViewById(R.id.pickHouseButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, PickHouseActivity.class);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    startActivity(intent);
+                }
+            });
+    }
+
 }

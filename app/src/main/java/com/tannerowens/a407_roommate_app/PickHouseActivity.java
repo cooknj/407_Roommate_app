@@ -2,9 +2,11 @@ package com.tannerowens.a407_roommate_app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -14,8 +16,8 @@ public class PickHouseActivity extends AppCompatActivity {
     private Button pickHouseButton;
     private EditText houseName;
     private DatabaseReference mDatabase;
-    private String email;//TODO: pass email and username in from main
-    private String username;
+    private String email;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,9 @@ public class PickHouseActivity extends AppCompatActivity {
 
         pickHouseButton = (Button) findViewById(R.id.pickHouseButton);
         houseName = (EditText) findViewById(R.id.houseNameText);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
+        email = getIntent().getStringExtra("email");
+        name = getIntent().getStringExtra("name");
 
         //used to get list of data from db
         /*mDatabase.addValueEventListener(new ValueEventListener() {
@@ -49,13 +53,18 @@ public class PickHouseActivity extends AppCompatActivity {
 
     private void pickHouse(){
         //join existing house
-        if(mDatabase.child("house").child(houseName.getText().toString()) != null){
-            mDatabase.child("house").child(houseName.getText().toString()).child("users").child(email).setValue(username);
+        String house = houseName.getText().toString();
+        if (TextUtils.isEmpty(house)) {
+            Toast.makeText(PickHouseActivity.this, "Fill in house name", Toast.LENGTH_LONG).show();
+        }
+        else if(mDatabase.child("house").child(house) != null){
+            mDatabase.child("house").child(house).child("users").child(name).setValue(email);
         }
         //TODO:create new house
         else{
-            mDatabase.child("house").child(houseName.getText().toString()).child("users").child(email).setValue(username);
-            mDatabase.child("house").child(houseName.getText().toString()).child("bulletin board").child("null").setValue(null);
+            mDatabase.child("house").child(house).setValue(houseName.getText().toString());
+            mDatabase.child("house").child(house).child("users").child(name).setValue(email);
+            //mDatabase.child("house").child(house).child("bulletin board").child("null").setValue(null);
         }
         finish();
     }
