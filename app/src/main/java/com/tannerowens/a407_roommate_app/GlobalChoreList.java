@@ -20,6 +20,7 @@ public class GlobalChoreList extends Application {
     }
 
     public Map<String, ArrayList<String>> getChoreMap() {
+
         return this.choreMap;
     }
 
@@ -28,8 +29,11 @@ public class GlobalChoreList extends Application {
      * @return List<String> list of chores
      */
     public ArrayList<String> getChoresFor(String name) {
-        ArrayList<String> list = choreMap.get(name);
-        return list;
+
+        if(choreMap.containsKey(name))
+            return choreMap.get(name);
+        else
+            return null;
     }
 
     /* adds chore to chore list of supplied name. Adds
@@ -43,6 +47,8 @@ public class GlobalChoreList extends Application {
 
         if(choreMap.containsKey(name)) {
             list = choreMap.get(name);
+            if(list.contains(chore))
+                return;
         }
         else {
             list = new ArrayList<String>();
@@ -50,6 +56,8 @@ public class GlobalChoreList extends Application {
 
         list.add(chore);
         choreMap.put(name, list);
+
+        return;
     }
 
     /* finds the owner of the specified chore
@@ -61,6 +69,7 @@ public class GlobalChoreList extends Application {
 
         for(String name : choreMap.keySet()) {
             list = choreMap.get(name);
+
             for(String s : list) {
                 if(chore.equals(s))
                     return name;
