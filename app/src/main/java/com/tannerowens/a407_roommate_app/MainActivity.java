@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String email;
     private String name;
+    private User user;
 
 
     @Override
@@ -29,24 +33,21 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
 
-        /*/////////////////TESTING FIREBASE DATABASE////////////////////////////
-        username = (TextView) findViewById(R.id.email);
-        fire = FirebaseDatabase.getInstance().getReference();
-        fire.addValueEventListener(new ValueEventListener() {
+        Intent i = new Intent(MainActivity.this, SignUpActivity.class);
+        startActivityForResult(i, 1);
+
+        //email and name are set in onActivityResult()
+        ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                username.setText(value);
+                user = (User) dataSnapshot.child("users").child(email).getValue();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
-
-        Intent i = new Intent(MainActivity.this, SignUpActivity.class);
-        startActivityForResult(i, 1);
+        };
         //////////////////////////////////////////////////////////////
 
         //configureBillsButton();
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, PickHouseActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
             });

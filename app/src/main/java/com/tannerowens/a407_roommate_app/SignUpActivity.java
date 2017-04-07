@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         nameText = (EditText) findViewById(R.id.nameText);
         signIn = (Button) findViewById(R.id.signIn);
         newUser = (Button) findViewById(R.id.newUserButton);
-        mAuth.signOut();//makes sure pre user is signed out
+        //mAuth.signOut();//makes sure pre user is signed out
         mAuthSL = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -95,7 +95,8 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 }
             });
-            mDatabase.child("account").child(name).setValue(emailText);
+            User newUser = new User(name, emailText);
+            mDatabase.child("users").child(emailText).setValue(newUser);
         }
     }
 
