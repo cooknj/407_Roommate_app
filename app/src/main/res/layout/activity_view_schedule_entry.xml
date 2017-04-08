@@ -84,7 +84,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="175dp" />
 
-        <EditText
+        <TextView
             android:id="@+id/entryDescription"
             android:layout_width="277dp"
             android:layout_height="45dp"
