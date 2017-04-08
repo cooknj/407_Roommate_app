@@ -12,7 +12,7 @@ public class User implements Serializable{
     private String name;
     private String email;
     private String username;
-    private House house;
+    private String house;
     private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>();
 
     public User(){
@@ -50,11 +50,11 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    public House getHouse() {
+    public String getHouse() {
         return house;
     }
 
-    public void setHouse(House house) {
+    public void setHouse(String house) {
         this.house = house;
     }
 

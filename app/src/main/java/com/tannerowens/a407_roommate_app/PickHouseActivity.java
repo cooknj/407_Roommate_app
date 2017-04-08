@@ -31,10 +31,21 @@ public class PickHouseActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
         user = (User) getIntent().getSerializableExtra("user");
 
+        configureBackButton();
         pickHouseButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 pickHouse();
+            }
+        });
+    }
+
+    private void configureBackButton() {
+        Button button = (Button) findViewById(R.id.backButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
@@ -47,27 +58,32 @@ public class PickHouseActivity extends AppCompatActivity {
         }
         else{
             mDatabase.child("house").addListenerForSingleValueEvent(new ValueEventListener() {
+                boolean houseExists = false;
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    boolean houseExists = false;
-                    /*House house;
+                    House house;
                     for (DataSnapshot houses: dataSnapshot.getChildren()) {//EXISTING HOUSE
-                        house = (House) houses.getValue();
+                        house = houses.getValue(House.class);
                         if (house.getName().equals(h)){
                             houseExists = true;
-                            house.addUser(user);
-                            mDatabase.child("house").child(h).setValue(house);
-                            user.setHouse(house);
-                            mDatabase.child("users").child(user.getEmail()).setValue(user);
+                            /*if(house.getUsers().contains(user)){
+                                finish();
+                            }*/
+                            //else {
+                                //house.addUser(user);
+                                mDatabase.child("house").child(h).setValue(house);
+                                user.setHouse(house.getName());
+                           // }
                         }
-                    }*/
+                    }
                     if(!houseExists){//create a new house
                         //mDatabase.child("house").child(h).setValue(houseName.getText().toString());
-                        House newHouse = new House(h, user);
+                        House newHouse = new House(h,user);
                         mDatabase.child("house").child(h).setValue(newHouse);
-                        user.setHouse(newHouse);
-                        mDatabase.child("users").child(user.getUsername()).setValue(user);
+                        user.setHouse(newHouse.getName());
                     }
+                    mDatabase.child("users").child(user.getUsername()).setValue(user);
+                    finish();
                 }
 
                 @Override
@@ -76,14 +92,5 @@ public class PickHouseActivity extends AppCompatActivity {
                 }
             });
         }
-        /*if(mDatabase.child("house").child(house) != null){
-            mDatabase.child("house").child(house).child("users").child(email).setValue(user);
-        }
-        else{
-            mDatabase.child("house").child(house).setValue(houseName.getText().toString());
-            mDatabase.child("house").child(house).child("users").child(email).setValue(user);
-            //mDatabase.child("house").child(house).child("bulletin board").child("null").setValue(null);
-        }*/
-        finish();
     }
 }
