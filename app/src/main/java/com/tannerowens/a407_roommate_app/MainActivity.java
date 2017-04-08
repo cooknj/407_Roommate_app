@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 username = s[0];
                 name = data.getStringExtra("name");
                 nameText.setText(name);
-                //getCurrentUser();
+                getCurrentUser();
             }
             else{
                 Intent i = new Intent(MainActivity.this, SignUpActivity.class);
@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (username != null) {
-                    user = new User();
                     for (DataSnapshot users: dataSnapshot.getChildren()) {
                         if(username.equals(users.getKey())){
-                            user = users.getValue(User.class);
+                            User u = users.getValue(User.class);
+                            user = u;
                         }
                     }
                 }

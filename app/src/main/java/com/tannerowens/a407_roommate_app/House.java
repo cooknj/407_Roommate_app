@@ -13,6 +13,10 @@ public class House implements Serializable{
     private ArrayList<User> users = new ArrayList<>();
     //private ArrayLise<Chore> houseChores;
 
+    public House(){
+
+    }
+
     public House(String name, User user){
         this.name = name;
         this.users.add(user);
