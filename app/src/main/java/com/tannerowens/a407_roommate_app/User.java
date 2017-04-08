@@ -11,11 +11,27 @@ public class User implements Serializable{
 
     private String name;
     private String email;
+    private String username;
     private House house;
-    private ArrayList<ScheduleEntry> scheduleEntries;
+    private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>();
+
+    public User(){
+
+    }
 
     public User(String name, String email){
+        this.name = name;
+        this.email = email;
+        String[] s = email.split("@");
+        this.username = s[0];
+    }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {

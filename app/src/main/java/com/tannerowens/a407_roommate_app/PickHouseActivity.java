@@ -50,22 +50,23 @@ public class PickHouseActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     boolean houseExists = false;
-                    House house;
-                    for (DataSnapshot houses: dataSnapshot.getChildren()) {
+                    /*House house;
+                    for (DataSnapshot houses: dataSnapshot.getChildren()) {//EXISTING HOUSE
                         house = (House) houses.getValue();
                         if (house.getName().equals(h)){
                             houseExists = true;
-                            mDatabase.child("house").child(h).child("users").child(user.getEmail()).setValue(user);
+                            house.addUser(user);
+                            mDatabase.child("house").child(h).setValue(house);
                             user.setHouse(house);
                             mDatabase.child("users").child(user.getEmail()).setValue(user);
                         }
-                    }
+                    }*/
                     if(!houseExists){//create a new house
                         //mDatabase.child("house").child(h).setValue(houseName.getText().toString());
                         House newHouse = new House(h, user);
                         mDatabase.child("house").child(h).setValue(newHouse);
                         user.setHouse(newHouse);
-                        mDatabase.child("users").child(user.getEmail()).setValue(user);
+                        mDatabase.child("users").child(user.getUsername()).setValue(user);
                     }
                 }
 
