@@ -13,7 +13,7 @@ public class User implements Serializable{
     private String email;
     private String username;
     private String house;
-    private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>();
+    private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>(100);
 
     public User(){
 
@@ -24,6 +24,20 @@ public class User implements Serializable{
         this.email = email;
         String[] s = email.split("@");
         this.username = s[0];
+    }
+
+    public void removeScheduleEntry(ScheduleEntry s){
+        int butt = s.getButton();
+        for(int i = 0; i<scheduleEntries.size();i++){
+            if (scheduleEntries.get(i).getButton() == butt){
+                this.scheduleEntries.remove(i);
+            }
+        }
+
+    }
+
+    public void addScheduleEntry(ScheduleEntry s){
+        this.scheduleEntries.add(s);
     }
 
     public String getUsername() {
