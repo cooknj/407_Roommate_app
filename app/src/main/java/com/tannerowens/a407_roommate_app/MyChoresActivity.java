@@ -8,6 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,6 +23,10 @@ import java.util.HashMap;
  */
 
 public class MyChoresActivity extends AppCompatActivity {
+
+    private DatabaseReference mDatabase;
+    private User user;
+
     HashMap<String, ArrayList<String>> choreMap = GlobalChoreList.getChoreMap();
 
     @Override
@@ -24,7 +34,11 @@ public class MyChoresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_chores);
 
+        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
+        user = (User) getIntent().getSerializableExtra("user");
+
         configureBackButton();
+        //getUserFromDB();
         displayMyChores();
     }
 
@@ -39,10 +53,28 @@ public class MyChoresActivity extends AppCompatActivity {
         });
     }
 
+    //TODO don't need this if i continually pass user through intents?
+    //get the current user from firebase
+//    private void getUserFromDB() {
+//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot u : dataSnapshot.getChildren()) {
+//                    user = u.getValue(User.class);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+
     //displays the chores on the page
     private void displayMyChores() {
         final ArrayList<String> list;
-        final String name = null; //TODO need a way to get current 'users' name
+        final String name = user.getName();
 
         list = choreMap.get(name);
 
