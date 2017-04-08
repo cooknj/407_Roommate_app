@@ -1,6 +1,8 @@
 package com.tannerowens.a407_roommate_app;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -65,7 +67,10 @@ public class AddChoresActivity extends AppCompatActivity{
                 list.add(chore);
                 choreMap.put(name, list);
 
-                finish();
+                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+
+                Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Added!", Snackbar.LENGTH_SHORT);
+                sb.show();
             }
         });
 

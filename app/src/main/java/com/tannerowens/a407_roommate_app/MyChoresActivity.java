@@ -1,6 +1,8 @@
 package com.tannerowens.a407_roommate_app;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -100,6 +102,11 @@ public class MyChoresActivity extends AppCompatActivity {
 
                 //update user's chore list
                 choreMap.put(name, list);
+
+                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+
+                Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Removed!", Snackbar.LENGTH_SHORT);
+                sb.show();
 
                 adapter.notifyDataSetChanged();
             }
