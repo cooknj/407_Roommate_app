@@ -12,13 +12,16 @@ import android.widget.Button;
  */
 
 public class ChoresActivity extends AppCompatActivity {
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chores_main);
 
+        user = (User) getIntent().getSerializableExtra("user");
+
         configureBackButton();
-        configureHomeButton();
         configureMyChoresButton();
         configureCompletedChoresButton();
         configureAddChoresButton();
@@ -34,23 +37,13 @@ public class ChoresActivity extends AppCompatActivity {
         });
     }
 
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(R.id.homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChoresActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
     private void configureMyChoresButton() {
         Button button = (Button) findViewById(R.id.myChores);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChoresActivity.this, MyChoresActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
