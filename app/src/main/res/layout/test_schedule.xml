@@ -111,19 +111,19 @@
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:text="10"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/textView10"
-                    android:layout_alignParentStart="true" />
+                    android:text="10"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:text="11"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/textView11"
-                    android:layout_alignParentStart="true" />
+                    android:text="11"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -156,19 +156,19 @@
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:text="3"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/textView15"
-                    android:layout_alignParentStart="true" />
+                    android:text="3"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <TextView
                     android:id="@+id/textView18"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:text="4"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/textView16"
-                    android:layout_alignParentStart="true" />
+                    android:text="4"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -181,8 +181,14 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/SUN"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"></LinearLayout>
 
                 <EditText
                     android:id="@+id/editText"
@@ -195,6 +201,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/MON"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
 
@@ -211,6 +218,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/TUES"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
 
@@ -226,6 +234,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/WED"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
 
@@ -241,6 +250,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/THURS"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
 
@@ -257,6 +267,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/FRI"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
 
@@ -273,6 +284,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/SAT"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
 
@@ -280,12 +292,19 @@
                     android:id="@+id/editText7"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
                     android:ems="10"
                     android:inputType="date"
-                    android:text="SAT"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
+                    android:text="SAT" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/addActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:text="Add Schedule Activity" />
+
 </LinearLayout>

@@ -24,9 +24,9 @@ public class ScheduleEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_entry);
 
-        Spinner startTime = (Spinner) findViewById(R.id.startTime);
-        Spinner endTime = (Spinner) findViewById(R.id.endTime);
-        Spinner day = (Spinner) findViewById(R.id.day);
+        this.startTime = (Spinner) findViewById(R.id.startTime);
+        this.endTime = (Spinner) findViewById(R.id.endTime);
+        this.day = (Spinner) findViewById(R.id.day);
 
         configureBackButton();
         configureSpinners();
@@ -38,9 +38,9 @@ public class ScheduleEntryActivity extends AppCompatActivity {
         String[] times = new String[]{"6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"};
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, times);
         ArrayAdapter<String> b = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, days);
-        startTime.setAdapter(a);
-        endTime.setAdapter(a);
-        day.setAdapter(b);
+        this.startTime.setAdapter(a);
+        this.endTime.setAdapter(a);
+        this.day.setAdapter(b);
     }
 
     private void configureBackButton() {

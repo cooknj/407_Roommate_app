@@ -38,12 +38,14 @@ public class SignUpActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
         mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
+        
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         nameText = (EditText) findViewById(R.id.nameText);
         signIn = (Button) findViewById(R.id.signIn);
         newUser = (Button) findViewById(R.id.newUserButton);
-        mAuth.signOut();//makes sure pre user is signed out
+        //mAuth.signOut();//makes sure pre user is signed out
         mAuthSL = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -83,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
         emailText = email.getText().toString();
         passwordText = password.getText().toString();
         name = nameText.getText().toString();
-        if (TextUtils.isEmpty(passwordText) || TextUtils.isEmpty(emailText) || TextUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(passwordText) || TextUtils.isEmpty(emailText)) {
             Toast.makeText(SignUpActivity.this, "Fill in email and password", Toast.LENGTH_LONG).show();
         }
         else{
@@ -93,9 +95,14 @@ public class SignUpActivity extends AppCompatActivity {
                     if (!task.isSuccessful()) {
                         Toast.makeText(SignUpActivity.this, "New User Sign up Failed", Toast.LENGTH_LONG).show();
                     }
+                    else{
+                        String[] splitEmail = emailText.split("@");
+                        String username = splitEmail[0];
+                        User newUser = new User(name, emailText);
+                        mDatabase.child("users").child(username.toString()).setValue(newUser);
+                    }
                 }
             });
-            mDatabase.child("account").child(name).setValue(emailText);
         }
     }
 

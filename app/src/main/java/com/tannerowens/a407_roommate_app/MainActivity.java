@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView nameText;
     private FirebaseAuth mAuth;
     private String email;
+    private String username;
     private String name;
+    private User user;
 
 
     @Override
@@ -29,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
 
-        /*/////////////////TESTING FIREBASE DATABASE////////////////////////////
-        username = (TextView) findViewById(R.id.email);
-        fire = FirebaseDatabase.getInstance().getReference();
-        fire.addValueEventListener(new ValueEventListener() {
+        Intent i = new Intent(MainActivity.this, SignUpActivity.class);
+        startActivityForResult(i, 1);
+
+        /*mDatabase.child("users").child("username").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                username.setText(value);
+                user = (User) dataSnapshot.child("users").child(username).getValue();
             }
 
             @Override
@@ -45,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-        Intent i = new Intent(MainActivity.this, SignUpActivity.class);
-        startActivityForResult(i, 1);
+        //email and name are set in onActivityResult()
         //////////////////////////////////////////////////////////////
 
         //configureBillsButton();
@@ -64,8 +67,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1){
             if(resultCode == 1){
                 email = data.getStringExtra("email");
+                String[] s = email.split("@");
+                username = s[0];
                 name = data.getStringExtra("name");
                 nameText.setText(name);
+                //getCurrentUser();
             }
             else{
                 Intent i = new Intent(MainActivity.this, SignUpActivity.class);
@@ -74,6 +80,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void getCurrentUser(){
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/users");
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (username != null) {
+                    user = new User();
+                    for (DataSnapshot users: dataSnapshot.getChildren()) {
+                        if(username.equals(users.getKey())){
+                            user = users.getValue(User.class);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     /*private void configureBulletinBoardButton() {
         Button button = (Button) findViewById(R.id.bulletinBoardButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -158,8 +185,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     Intent intent = new Intent(MainActivity.this, PickHouseActivity.class);
-                    intent.putExtra("name", name);
-                    intent.putExtra("email", email);
+                    //user = new User("goo", "boo");//TESTING
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
             });
