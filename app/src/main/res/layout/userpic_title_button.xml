@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="wrap_content" android:layout_width="wrap_content">
+<ImageView
+    android:id="@+id/uTButton"
+    android:layout_width="wrap_content"
+    android:src="@drawable/ProfilePicPlaceholder"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"/>
+    <TextView
+        android:id="@+id/uTButton_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/uTButton"
+        android:layout_toRightOf="@+id/uTButton"
+        android:text="Relative layout"/>
+        <TextView
+            android:id="@+id/uTButton_text1"
+            android:layout_width="wrap_content"
+            android:text="Compound button"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/uTButton_text2"
+            android:layout_alignLeft="@+id/uTButton_text2"/>
+</RelativeLayout>

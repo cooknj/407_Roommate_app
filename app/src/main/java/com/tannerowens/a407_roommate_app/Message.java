@@ -9,7 +9,7 @@ public class Message {
     private String poster;
     private String content;
 
-    public Messsage(String poster, String content){
+    public  Message(String poster, String content){
         this.poster = poster;
         this.content = content;
     }
