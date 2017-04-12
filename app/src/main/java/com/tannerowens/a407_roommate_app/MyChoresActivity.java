@@ -55,24 +55,6 @@ public class MyChoresActivity extends AppCompatActivity {
         });
     }
 
-    //TODO don't need this if i continually pass user through intents?
-    //get the current user from firebase
-//    private void getUserFromDB() {
-//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot u : dataSnapshot.getChildren()) {
-//                    user = u.getValue(User.class);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
-
     //displays the chores on the page
     private void displayMyChores() {
         final ArrayList<String> list;
