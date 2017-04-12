@@ -1,78 +1,116 @@
 package com.tannerowens.a407_roommate_app;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import static com.tannerowens.a407_roommate_app.R.id.backButton;
-import static com.tannerowens.a407_roommate_app.R.id.homeButton;
-import static com.tannerowens.a407_roommate_app.R.id.listView;
 
 /**
  * Created by Nick on 3/30/2017.
  */
 
 public class MyChoresActivity extends AppCompatActivity {
-    GlobalChoreList choreMap = (GlobalChoreList) getApplication();
+
+    private DatabaseReference mDatabase;
+    private User user;
+
+    HashMap<String, ArrayList<String>> choreMap = GlobalChoreList.getChoreMap();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_chores);
 
+        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
+        user = (User) getIntent().getSerializableExtra("user");
+
         configureBackButton();
-        configureHomeButton();
+        //getUserFromDB();
         displayMyChores();
     }
 
     //back button config (back to chores activity)
     private void configureBackButton() {
-        Button button = (Button) findViewById(backButton);
+        Button button = (Button) findViewById(R.id.backButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ChoresActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
 
-    //back to main screen
-    private void configureHomeButton() {
-        Button button = (Button) findViewById(homeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+    //TODO don't need this if i continually pass user through intents?
+    //get the current user from firebase
+//    private void getUserFromDB() {
+//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot u : dataSnapshot.getChildren()) {
+//                    user = u.getValue(User.class);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 
     //displays the chores on the page
     private void displayMyChores() {
-        ArrayList<String> list;
-        String name = null; //TODO need a way to get current 'users' name
+        final ArrayList<String> list;
+        final String name = user.getName();
 
-        list = choreMap.getChoresFor(name);
+        list = choreMap.get(name);
 
         //get ListView object from xml file
-        final ListView list_xml = (ListView) findViewById(R.id.listView);
+        final ListView list_xml = (ListView) findViewById(R.id.list);
 
         //define new adapter
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, R.id.text1, list);
+        final ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
 
         //set list view adapter
         list_xml.setAdapter(adapter);
+
+        //on click delete chore from list ("completed")
+        list_xml.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //get the chore that was clicked
+                String chore = adapter.getItem(position);
+
+                //update the local list variable for xml changes
+                list.remove(chore);
+
+                //update user's chore list
+                choreMap.put(name, list);
+
+                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+
+                Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Removed!", Snackbar.LENGTH_SHORT);
+                sb.show();
+
+                adapter.notifyDataSetChanged();
+            }
+        });
 
         }
     }

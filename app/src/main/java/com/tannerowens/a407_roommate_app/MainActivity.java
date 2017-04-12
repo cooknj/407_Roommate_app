@@ -2,6 +2,7 @@ package com.tannerowens.a407_roommate_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private String username;
     private String name;
     private User user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 username = s[0];
                 name = data.getStringExtra("name");
                 nameText.setText(name);
-                //getCurrentUser();
+                getCurrentUser();
             }
             else{
                 Intent i = new Intent(MainActivity.this, SignUpActivity.class);
@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (username != null) {
-                    user = new User();
                     for (DataSnapshot users: dataSnapshot.getChildren()) {
                         if(username.equals(users.getKey())){
-                            user = users.getValue(User.class);
+                            User u = users.getValue(User.class);
+                            user = u;
                         }
                     }
                 }
@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ChoresActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });

@@ -1,7 +1,5 @@
 package com.tannerowens.a407_roommate_app;
 
-import android.widget.Button;
-
 import java.io.Serializable;
 
 /**
@@ -14,6 +12,11 @@ public class ScheduleEntry implements Serializable{
     private String end;
     private String day;
     private String description;
+    private int button;
+
+    public ScheduleEntry(){
+
+    }
 
     public ScheduleEntry(String start, String end, String day, String description){
         this.start = start;
@@ -22,15 +25,13 @@ public class ScheduleEntry implements Serializable{
         this.description = description;
     }
 
-    public Button getButton() {
+    public int getButton() {
         return button;
     }
 
-    public void setButton(Button button) {
+    public void setButton(int button) {
         this.button = button;
     }
-
-    private Button button;
 
     public String getDay() {
         return day;
