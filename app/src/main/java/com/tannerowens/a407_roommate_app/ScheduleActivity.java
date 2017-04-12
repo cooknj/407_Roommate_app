@@ -168,6 +168,8 @@ public class ScheduleActivity extends AppCompatActivity{
                 row1 = 0;
                 break;
         }
+        Log.i("row1", Integer.toString(row1));
+        Log.i("day", day);
         switch (row1) {
             case 1:
                 switch (day) {
@@ -188,6 +190,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN6am);
                         break;
                 }
+                break;
             case 2:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN7am);
@@ -207,6 +210,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN7am);
                         break;
                 }
+                break;
             case 3:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN8am);
@@ -226,6 +230,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN8am);
                         break;
                 }
+                break;
             case 4:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN9am);
@@ -245,6 +250,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN9am);
                         break;
                 }
+                break;
             case 5:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN10am);
@@ -264,6 +270,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN10am);
                         break;
                 }
+                break;
             case 6:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN11am);
@@ -283,6 +290,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN11am);
                         break;
                 }
+                break;
             case 7:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN12pm);
@@ -302,6 +310,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN12pm);
                         break;
                 }
+                break;
             case 8:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN1pm);
@@ -321,6 +330,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN1pm);
                         break;
                 }
+                break;
             case 9:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN2pm);
@@ -340,6 +350,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN2pm);
                         break;
                 }
+                break;
             case 10:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN3pm);
@@ -359,6 +370,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN3pm);
                         break;
                 }
+                break;
             case 11:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN4pm);
@@ -378,6 +390,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN4pm);
                         break;
                 }
+                break;
             case 12:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN5pm);
@@ -397,6 +410,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN5pm);
                         break;
                 }
+                break;
             case 13:
                 switch (day) {
                     case "SUN": b = (Button) findViewById(R.id.SUN6pm);
@@ -416,6 +430,7 @@ public class ScheduleActivity extends AppCompatActivity{
                     default: b = (Button) findViewById(R.id.SUN6pm);
                         break;
                 }
+                break;
         }
         return b;
     }
