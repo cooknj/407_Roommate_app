@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tannerowens.a407_roommate_app.PickHouseActivity">
-
-    <EditText
-        android:id="@+id/houseNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="House Name"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="135dp"
-        app:layout_constraintBottom_toTopOf="@+id/pickHouseButton"
-        android:layout_marginLeft="85dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/pickHouseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pick House"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="99dp"
-        android:layout_marginLeft="140dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    tools:context="com.tannerowens.a407_roommate_app.PickHouseActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="6dp"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_weight="0.07"
+        android:text="Pick an existing house to join or create a new one!"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <EditText
+        android:id="@+id/houseNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="House Name"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/pickHouseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Pick House" />
+
+</LinearLayout>
