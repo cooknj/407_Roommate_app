@@ -14,6 +14,7 @@ public class User implements Serializable{
     private String username;
     private String house;
     private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>(100);
+    private ArrayList<CalendarEvent> calendarEvents = new ArrayList<>();
 
     public User(){
 
@@ -79,4 +80,12 @@ public class User implements Serializable{
     public void setScheduleEntries(ArrayList<ScheduleEntry> scheduleEntries) {
         this.scheduleEntries = scheduleEntries;
     }
+    
+    public void setCalendarEvents(ArrayList<CalendarEvent> calendarEvents) {
+        this.calendarEvents = calendarEvents;
+    }
+
+    public void addCalendarEvent(CalendarEvent s) {this.calendarEvents.add(s);}
+
+    public ArrayList<CalendarEvent> getCalendarEvents() {return calendarEvents;}
 }
