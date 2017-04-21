@@ -103,7 +103,7 @@
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/schedule_border"
-                            android:text="WEDNESDAY"
+                            android:text="WED"
                             android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <TextView
