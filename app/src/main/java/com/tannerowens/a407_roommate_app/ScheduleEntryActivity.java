@@ -48,8 +48,7 @@ public class ScheduleEntryActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ScheduleEntryActivity.this, ScheduleActivity.class);
-                startActivity(intent);
+               finish();
             }
         });
     }
