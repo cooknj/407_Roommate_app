@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/paper_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,10 +13,10 @@
         android:weightSum="1">
 
         <Button
+            android:background="@drawable/back_arrow"
             android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="Back" />
 
         <TextView
@@ -28,9 +29,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/cancelButton"
-            android:layout_weight="0.41" />
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <EditText
@@ -52,14 +51,12 @@
         app:layout_constraintTop_toBottomOf="@+id/bulletinTitle" />
 
     <Button
+        android:background="@drawable/blue_note"
         android:id="@+id/postButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="100dp"
-        android:text="Post"
-        app:layout_constraintTop_toBottomOf="@+id/bulletinContent" />
+        android:text="Post" />
 
 </LinearLayout>

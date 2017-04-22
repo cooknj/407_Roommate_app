@@ -5,8 +5,8 @@
     <application
         android:name=".RoommateApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/house_image"
+        android:label="RoomMate"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,16 +21,16 @@
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".ScheduleEntryActivity" />
         <activity android:name=".ChoresActivity"
-            android:label="@string/app_name"/>
+            android:label="RoomMate"/>
         <activity android:name=".UncompletedChoresActivity"
-            android:label="@string/app_name"/>
+            android:label="RoomMate"/>
         <activity android:name=".AddChoresActivity"
-            android:label="@string/app_name"/>
+            android:label="RoomMate"/>
         <activity android:name=".MyChoresActivity"
-            android:label="@string/app_name"/>
+            android:label="RoomMate"/>
         <activity
             android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up"
+            android:label="RoomMate"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".PickHouseActivity" />

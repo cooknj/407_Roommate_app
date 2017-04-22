@@ -6,13 +6,35 @@
     android:layout_height="match_parent"
     tools:context="com.tannerowens.a407_roommate_app.PickHouseActivity"
     android:orientation="vertical"
+    android:background="@drawable/paper_background"
     android:weightSum="1">
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back" />
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:background="@drawable/back_arrow"
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Back" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:text="Pick House"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/cancelButton" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
@@ -37,10 +59,12 @@
 
     <Button
         android:id="@+id/pickHouseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:text="Pick House" />
+        android:background="@drawable/house_image"
+        android:text="Pick House"
+        android:textSize="30sp" />
 
 </LinearLayout>
