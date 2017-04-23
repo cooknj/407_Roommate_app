@@ -6,6 +6,7 @@ import android.provider.Settings;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -84,8 +85,8 @@ public class AddChoresActivity extends AppCompatActivity{
                 sb.show();
 
                 //clear text fields for multiple-entry
-                ((EditText)findViewById(R.id.assignedToText)).setText(" ");
-                ((EditText)findViewById(R.id.choreNameText)).setText(" ");
+                ((EditText)findViewById(R.id.assignedToText)).setHint(((EditText) findViewById(R.id.assignedToText)).getHint());
+                ((EditText)findViewById(R.id.choreNameText)).setHint(((EditText) findViewById(R.id.choreNameText)).getHint());
 
                 storeChoresInFirebase();
             }
@@ -102,7 +103,7 @@ public class AddChoresActivity extends AppCompatActivity{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i("DBerror", "DATABASE ERROR WHILE STORING CHORES");
             }
         });
 
