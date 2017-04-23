@@ -59,6 +59,9 @@ public class MyChoresActivity extends AppCompatActivity {
 
     //retrieval of chore data from firebase
     private void updateFromFirebase() {
+        ArrayList<String> list;
+        String name = user.getName().toLowerCase();
+
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -78,6 +81,19 @@ public class MyChoresActivity extends AppCompatActivity {
                 Log.i("DBerror", "DATABASE ERROR WHILE RETRIEVING CHORES");
             }
         });
+
+        list = choreMap.get(name);
+
+        //get ListView object from xml file
+        final ListView list_xml = (ListView) findViewById(R.id.list);
+
+        //define new adapter
+        final ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+
+        //set list view adapter
+        list_xml.setAdapter(adapter);
+
     }
 
     //displays the chores on the page
