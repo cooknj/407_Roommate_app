@@ -38,6 +38,21 @@ public class AddChoresActivity extends AppCompatActivity{
 
         mdb = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
 
+        mdb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    if(child.getKey().equals("chores"))
+                        choreMap = child.getValue(GlobalChoreList.class).getChoreMap();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         configureBackButton();
         configureAddChoresButton();
     }
@@ -92,13 +107,13 @@ public class AddChoresActivity extends AppCompatActivity{
         mdb.child("chores").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GlobalChoreList db_chores;
-                for(DataSnapshot d : dataSnapshot.getChildren()) {
-                    db_chores = d.getValue(GlobalChoreList.class);
-                    if(db_chores.getChoreMap().equals(choreMap)) {
-                        //choreMap already exists, only need to update
-                    }
-                }
+                //GlobalChoreList db_chores;
+                //for(DataSnapshot d : dataSnapshot.getChildren()) {
+                    //db_chores = d.getValue(GlobalChoreList.class);
+                    //if(db_chores.getChoreMap().equals(choreMap)) {
+                        mdb.child("chores").setValue(choreMap);
+                    //}
+                //}
             }
 
             @Override
