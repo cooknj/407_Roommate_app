@@ -1,7 +1,6 @@
 package com.tannerowens.a407_roommate_app;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,7 +40,6 @@ public class ViewScheduleEntryActivity extends AppCompatActivity {
         removeActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                entry.getButton().setBackgroundColor(Color.GRAY);
                 Intent i = new Intent();
                 i.putExtra("entry", entry);
                 setResult(1, i);
