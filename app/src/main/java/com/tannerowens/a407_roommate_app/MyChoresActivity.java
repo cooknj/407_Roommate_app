@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -66,10 +67,15 @@ public class MyChoresActivity extends AppCompatActivity {
                     //get indexing data
                     ArrayList<String> list;
                     String name;
-                    name = child.getKey();
-                    list = (ArrayList)child.getValue();
-                    //update the choreMap with firebase data
-                    choreMap.put(name.toLowerCase(), list);
+                    if(child.getValue() instanceof ArrayList) {
+                        name = child.getKey();
+                        list = (ArrayList)child.getValue();
+                        //update the choreMap with firebase data
+                        choreMap.put(name.toLowerCase(), list);
+                    }
+                    else if(child.getValue() instanceof HashMap) {
+                        choreMap = (HashMap)child.getValue();
+                    }
                 }
             }
 
@@ -119,8 +125,26 @@ public class MyChoresActivity extends AppCompatActivity {
                 sb.show();
 
                 adapter.notifyDataSetChanged();
+
+                //update the firebase db
+                storeChoresInFirebase();
             }
         });
+
+        }
+
+        public void storeChoresInFirebase() {
+            mDatabase.child("chores").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mDatabase.child("chores").setValue(choreMap);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.i("DBerror", "DATABASE ERROR WHILE STORING CHORES");
+                }
+            });
 
         }
     }
