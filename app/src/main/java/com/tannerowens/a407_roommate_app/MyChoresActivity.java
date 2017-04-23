@@ -59,20 +59,20 @@ public class MyChoresActivity extends AppCompatActivity {
 
     //retrieval of chore data from firebase
     private void updateFromFirebase() {
-        ArrayList<String> list;
-        String name = user.getName().toLowerCase();
+        final ArrayList<String> list;
+        final String name = user.getName().toLowerCase();
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for(DataSnapshot child : snapshot.getChildren()) {
                     //get indexing data
-                    ArrayList<String> list;
-                    String name;
-                    name = child.getKey();
-                    list = (ArrayList)child.getValue();
+                    ArrayList<String> alist;
+                    String sname;
+                    sname = child.getKey();
+                    alist = (ArrayList)child.getValue();
                     //update the choreMap with firebase data
-                    choreMap.put(name.toLowerCase(), list);
+                    choreMap.put(sname.toLowerCase(), alist);
                 }
             }
 
@@ -83,6 +83,7 @@ public class MyChoresActivity extends AppCompatActivity {
         });
 
         list = choreMap.get(name);
+        if(list==null) return;
 
         //get ListView object from xml file
         final ListView list_xml = (ListView) findViewById(R.id.list);
