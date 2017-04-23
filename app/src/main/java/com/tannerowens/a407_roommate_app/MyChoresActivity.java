@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,11 +37,12 @@ public class MyChoresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_chores);
 
-        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
+        //get database reference and user data
+        mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/chores");
         user = (User) getIntent().getSerializableExtra("user");
 
         configureBackButton();
-        //getUserFromDB();
+        updateFromFirebase();
         displayMyChores();
     }
 
@@ -55,12 +57,38 @@ public class MyChoresActivity extends AppCompatActivity {
         });
     }
 
+    //retrieval of chore data from firebase
+    private void updateFromFirebase() {
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    //get indexing data
+                    ArrayList<String> list;
+                    String name;
+                    name = child.getKey();
+                    list = (ArrayList)child.getValue();
+                    //update the choreMap with firebase data
+                    choreMap.put(name.toLowerCase(), list);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i("DBerror", "DATABASE ERROR WHILE RETRIEVING CHORES");
+            }
+        });
+    }
+
     //displays the chores on the page
     private void displayMyChores() {
         final ArrayList<String> list;
-        final String name = user.getName();
+        final String name = user.getName().toLowerCase();
 
         list = choreMap.get(name);
+
+        //if the list has nothing then just return
+        if(list==null) return;
 
         //get ListView object from xml file
         final ListView list_xml = (ListView) findViewById(R.id.list);

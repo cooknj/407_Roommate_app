@@ -38,25 +38,9 @@ public class AddChoresActivity extends AppCompatActivity{
 
         mdb = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
 
-        mdb.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for(DataSnapshot child : snapshot.getChildren()) {
-                    if(child.getKey().equals("chores"))
-                        choreMap = child.getValue(GlobalChoreList.class).getChoreMap();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         configureBackButton();
         configureAddChoresButton();
     }
-
 
     //back button config (back to chores activity)
     private void configureBackButton() {
@@ -79,7 +63,7 @@ public class AddChoresActivity extends AppCompatActivity{
                 ArrayList<String> list;
                 //get & process the name of who is assigned the chore
                 EditText name_txt = (EditText) findViewById(R.id.assignedToText);
-                String name = name_txt.getText().toString();
+                String name = name_txt.getText().toString().toLowerCase();
 
                 //get & process the chore
                 EditText chore_txt = (EditText) findViewById(R.id.choreNameText);
@@ -98,22 +82,22 @@ public class AddChoresActivity extends AppCompatActivity{
 
                 Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Added!", Snackbar.LENGTH_SHORT);
                 sb.show();
+
+                //clear text fields for multiple-entry
+                ((EditText)findViewById(R.id.assignedToText)).setText(" ");
+                ((EditText)findViewById(R.id.choreNameText)).setText(" ");
+
+                storeChoresInFirebase();
             }
         });
     }
 
-    //TODO
+    //TODO stores the chores in firebase for persistence
     public void storeChoresInFirebase() {
         mdb.child("chores").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //GlobalChoreList db_chores;
-                //for(DataSnapshot d : dataSnapshot.getChildren()) {
-                    //db_chores = d.getValue(GlobalChoreList.class);
-                    //if(db_chores.getChoreMap().equals(choreMap)) {
-                        mdb.child("chores").setValue(choreMap);
-                    //}
-                //}
+                mdb.child("chores").setValue(choreMap);
             }
 
             @Override
