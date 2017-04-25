@@ -75,6 +75,7 @@ public class ChoresActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChoresActivity.this, AddChoresActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });

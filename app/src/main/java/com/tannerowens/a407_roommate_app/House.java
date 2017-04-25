@@ -1,5 +1,7 @@
 package com.tannerowens.a407_roommate_app;
 
+import android.app.Application;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,7 +9,7 @@ import java.util.ArrayList;
  * Created by Tanner on 4/7/2017.
  */
 
-public class House implements Serializable{
+public class House implements Serializable {
 
     private String name;
     private ArrayList<String> users = new ArrayList<>();

@@ -93,9 +93,9 @@ public class MyChoresActivity extends AppCompatActivity {
     //displays the chores on the page
     private void displayMyChores() {
         final ArrayList<String> list;
-        final String name = user.getName().toLowerCase();
+        final String username = user.getUsername().toLowerCase();
 
-        list = choreMap.get(name);
+        list = choreMap.get(username);
 
         //if the list has nothing then just return
         if(list==null) return;
@@ -121,7 +121,7 @@ public class MyChoresActivity extends AppCompatActivity {
                 list.remove(chore);
 
                 //update user's chore list
-                choreMap.put(name, list);
+                choreMap.put(username, list);
 
                 CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 

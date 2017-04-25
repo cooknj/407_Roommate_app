@@ -41,4 +41,6 @@
         <activity android:name=".ViewCalendarEventActivity" />
     </application>
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 </manifest>
