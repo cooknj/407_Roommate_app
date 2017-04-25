@@ -40,7 +40,6 @@ public class MyChoresActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("user");
 
         configureBackButton();
-        //getUserFromDB();
         displayMyChores();
     }
 
@@ -58,9 +57,9 @@ public class MyChoresActivity extends AppCompatActivity {
     //displays the chores on the page
     private void displayMyChores() {
         final ArrayList<String> list;
-        final String name = user.getName();
+        final String username = user.getUsername().toLowerCase();
 
-        list = choreMap.get(name);
+        list = choreMap.get(username);
 
         //get ListView object from xml file
         final ListView list_xml = (ListView) findViewById(R.id.list);
@@ -83,7 +82,7 @@ public class MyChoresActivity extends AppCompatActivity {
                 list.remove(chore);
 
                 //update user's chore list
-                choreMap.put(name, list);
+                choreMap.put(username, list);
 
                 CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
