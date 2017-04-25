@@ -8,8 +8,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,26 +60,31 @@ public class AddChoresActivity extends AppCompatActivity{
     private void configureAddChoresButton() {
         Button button = (Button) findViewById(R.id.addChoreButton);
 
+        Spinner dropdown = (Spinner) findViewById(R.id.assignedToText);
+        String[] items = new String[]{, , };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ArrayList<String> list;
                 //get & process the name of who is assigned the chore
-                EditText name_txt = (EditText) findViewById(R.id.assignedToText);
-                String name = name_txt.getText().toString().toLowerCase();
+
+                String username = dropdown.getText().toString();
 
                 //get & process the chore
                 EditText chore_txt = (EditText) findViewById(R.id.choreNameText);
                 String chore = chore_txt.getText().toString();
 
                 //add to the choreMap
-                list = choreMap.get(name);
+                list = choreMap.get(username);
 
                 if(list==null)
                     list = new ArrayList<String>();
 
                 list.add(chore);
-                choreMap.put(name, list);
+                choreMap.put(username, list);
 
                 CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
@@ -93,7 +100,6 @@ public class AddChoresActivity extends AppCompatActivity{
         });
     }
 
-    //TODO stores the chores in firebase for persistence
     public void storeChoresInFirebase() {
         mdb.child("chores").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
