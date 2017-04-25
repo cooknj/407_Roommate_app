@@ -79,6 +79,7 @@ public class PickHouseActivity extends AppCompatActivity {
                     if(!houseExists){//create a new house
                         //mDatabase.child("house").child(h).setValue(houseName.getText().toString());
                         House newHouse = new House(h,user);
+                        HouseWrapper.setHouse(newHouse); //set the house object in the wrapper class
                         mDatabase.child("house").child(h).setValue(newHouse);
                         user.setHouse(newHouse.getName());
                     }

@@ -13,8 +13,14 @@ public class HouseWrapper extends Application {
         //empty
     }
 
-    private static House HouseWrapper(String h_name) {
+    public static House getHouse() {
+        if(house == null)
+            return null;
+        else return house;
+    }
 
+    public static void setHouse(House h) {
+        house = h;
     }
 
 }
