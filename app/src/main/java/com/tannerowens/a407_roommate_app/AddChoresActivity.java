@@ -6,6 +6,7 @@ import android.provider.Settings;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,7 +45,6 @@ public class AddChoresActivity extends AppCompatActivity{
         configureAddChoresButton();
     }
 
-
     //back button config (back to chores activity)
     private void configureBackButton() {
         Button button = (Button) findViewById(R.id.backButton);
@@ -70,6 +70,7 @@ public class AddChoresActivity extends AppCompatActivity{
             public void onClick(View view) {
                 ArrayList<String> list;
                 //get & process the name of who is assigned the chore
+
                 String username = dropdown.getText().toString();
 
                 //get & process the chore
@@ -89,6 +90,12 @@ public class AddChoresActivity extends AppCompatActivity{
 
                 Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Added!", Snackbar.LENGTH_SHORT);
                 sb.show();
+
+                //clear text fields for multiple-entry
+                ((EditText)findViewById(R.id.assignedToText)).setHint(((EditText) findViewById(R.id.assignedToText)).getHint());
+                ((EditText)findViewById(R.id.choreNameText)).setHint(((EditText) findViewById(R.id.choreNameText)).getHint());
+
+                storeChoresInFirebase();
             }
         });
     }
@@ -97,18 +104,12 @@ public class AddChoresActivity extends AppCompatActivity{
         mdb.child("chores").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GlobalChoreList db_chores;
-                for(DataSnapshot d : dataSnapshot.getChildren()) {
-                    db_chores = d.getValue(GlobalChoreList.class);
-                    if(db_chores.getChoreMap().equals(choreMap)) {
-                        //choreMap already exists, only need to update
-                    }
-                }
+                mdb.child("chores").setValue(choreMap);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i("DBerror", "DATABASE ERROR WHILE STORING CHORES");
             }
         });
 
