@@ -13,6 +13,15 @@ public class CalendarEvent implements Serializable{
     private int date;
     private int year;
 
+    public CalendarEvent(){
+        this.name = "";
+        this.location = "";
+        this.startTime = "";
+        this.endTime = "";
+        this.month = 0;
+        this.date = 0;
+        this.year = 0;
+    }
 
     public CalendarEvent(String name, String location, String startTime, String endTime,
                               int month, int date, int year) {
