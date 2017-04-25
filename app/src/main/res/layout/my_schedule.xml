@@ -138,8 +138,7 @@
                         android:id="@+id/MON6am"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:text=""
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:text="" />
 
                     <Button
                         android:id="@+id/TUES6am"

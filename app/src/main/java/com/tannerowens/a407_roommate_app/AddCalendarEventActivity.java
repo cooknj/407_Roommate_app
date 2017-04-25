@@ -81,9 +81,9 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                 if (!personal.isChecked()) {
                     if (user.getHouse() != null) {
                         for (int i = 0; i < group.getUsers().size(); i++) {
-                            User currUser = group.getUsers().get(i);
-                            currUser.addCalendarEvent(event);
-                            mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
+                            //User currUser = group.getUsers().get(i);
+                            //currUser.addCalendarEvent(event);
+                            //mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
                         }
                     }
                 }
