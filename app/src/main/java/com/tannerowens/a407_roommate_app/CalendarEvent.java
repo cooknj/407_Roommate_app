@@ -7,8 +7,8 @@ public class CalendarEvent implements Serializable{
 
     private String name;
     private String location;
-    private String startTime;
-    private String endTime;
+    private String start;
+    private String end;
     private int month;
     private int date;
     private int year;
@@ -16,19 +16,19 @@ public class CalendarEvent implements Serializable{
     public CalendarEvent(){
         this.name = "";
         this.location = "";
-        this.startTime = "";
-        this.endTime = "";
+        this.start = "";
+        this.end = "";
         this.month = 0;
         this.date = 0;
         this.year = 0;
     }
 
-    public CalendarEvent(String name, String location, String startTime, String endTime,
+    public CalendarEvent(String name, String location, String start, String end,
                               int month, int date, int year) {
         this.name = name;
         this.location = location;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.start = start;
+        this.end = end;
         this.month = month;
         this.date = date;
         this.year = year;
@@ -44,7 +44,7 @@ public class CalendarEvent implements Serializable{
 
     public String getLocation() {return location;}
 
-    public String getStart() {return startTime;}
+    public String getStart() {return start;}
 
-    public String getEnd() {return endTime;}
+    public String getEnd() {return end;}
 }

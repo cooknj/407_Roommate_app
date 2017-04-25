@@ -12,19 +12,21 @@ import java.util.ArrayList;
 public class House implements Serializable {
 
     private String name;
-    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<String> users = new ArrayList<>();
     //private ArrayLise<Chore> houseChores;
 
     public House(){
 
     }
 
-    public House(String name, User user){
+    public House(String name, String user){
         this.name = name;
         this.users.add(user);
     }
 
-    public void addUser(User user){
+    public void removeUser(String user) {this.users.remove(user);}
+
+    public void addUser(String user){
         this.users.add(user);
     }
 
@@ -36,11 +38,11 @@ public class House implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<User> getUsers() {
+    public ArrayList<String> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(ArrayList<String> users) {
         this.users = users;
     }
 }
