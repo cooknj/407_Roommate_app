@@ -16,6 +16,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class OurCalendarActivity extends AppCompatActivity {
 
@@ -30,22 +33,11 @@ public class OurCalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_main);
-        CalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
         //mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
         user = (User) getIntent().getSerializableExtra("user");
 
 
-        // perform setOnDateChangeListener event on CalendarView
-       CalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                selectedMonth = month + 1;
-                selectedDay = dayOfMonth;
-                selectedYear = year;
-            }
-        });
-
-
+        configureCalendarView();
         configureBackButton();
         configureAddEventButton();
         configureViewEventButton();
@@ -105,6 +97,25 @@ public class OurCalendarActivity extends AppCompatActivity {
                 intent.putExtra("month", selectedMonth );
                 intent.putExtra("year", selectedYear );
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void configureCalendarView() {
+
+        CalendarView c = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
+        long date = c.getDate();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
+        selectedYear = calendar.get(Calendar.YEAR);
+        selectedMonth = calendar.get(Calendar.MONTH) + 1;
+        selectedDay = calendar.get(Calendar.DAY_OF_MONTH);
+        c.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                selectedMonth = month + 1;
+                selectedDay = dayOfMonth;
+                selectedYear = year;
             }
         });
     }
