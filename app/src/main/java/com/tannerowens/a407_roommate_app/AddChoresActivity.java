@@ -34,7 +34,7 @@ import java.util.HashMap;
 public class AddChoresActivity extends AppCompatActivity{
     //get the global chore map variable
     HashMap<String, ArrayList<String>> choreMap = GlobalChoreList.getChoreMap();
-    ArrayList<User> user_list;
+    ArrayList<String> user_list;
     House house = HouseWrapper.getHouse();
     User user;
     DatabaseReference mdb;
@@ -56,9 +56,9 @@ public class AddChoresActivity extends AppCompatActivity{
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             finish();
-        } else {
-            user_list = house.getUsers();
         }
+
+        user_list = house.getUsers();
 
         configureBackButton();
         configureAddChoresButton();
@@ -83,7 +83,7 @@ public class AddChoresActivity extends AppCompatActivity{
 
         if (user_list != null) {
             for (int i = 0; i < user_list.size(); i++) {
-                items[i] = user_list.get(i).getUsername().toLowerCase();
+                items[i] = user_list.get(i).toLowerCase();
             }
          } else {
             items[0] = user.getUsername().toLowerCase();
@@ -120,7 +120,7 @@ public class AddChoresActivity extends AppCompatActivity{
 
                 //clear text fields for multiple-entry
                 //((Spinner)findViewById(R.id.assignedToText)).setHint(((EditText) findViewById(R.id.assignedToText)).getHint());
-                ((EditText)findViewById(R.id.choreNameText)).setHint(((EditText) findViewById(R.id.choreNameText)).getHint());
+                //((EditText)findViewById(R.id.choreNameText)).setHint(((EditText) findViewById(R.id.choreNameText)).getHint());
 
                 storeChoresInFirebase();
             }

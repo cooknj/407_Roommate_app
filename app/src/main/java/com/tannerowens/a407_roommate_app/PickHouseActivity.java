@@ -74,11 +74,13 @@ public class PickHouseActivity extends AppCompatActivity {
                             houseExists = true;
                             if(house.getUsers().contains(user.getUsername())){
                                 user.setHouse(house.getName());
+                                HouseWrapper.setHouse(house);
                             }
                             else {
                                 house.addUser(user.getUsername());
                                 mDatabase.child("house").child(h).setValue(house);
                                 user.setHouse(house.getName());
+                                HouseWrapper.setHouse(house);
                             }
                         }
                         if(house.getName().equals(oldHouse) && !house.getName().equals(h)){
@@ -86,9 +88,8 @@ public class PickHouseActivity extends AppCompatActivity {
                         }
                     }
                     if(!houseExists){//create a new house
-
-                        HouseWrapper.setHouse(newHouse); //set the house object in the wrapper class
                         House newHouse = new House(h,user.getUsername());
+                        HouseWrapper.setHouse(newHouse);
 
                         mDatabase.child("house").child(h).setValue(newHouse);
                         user.setHouse(newHouse.getName());

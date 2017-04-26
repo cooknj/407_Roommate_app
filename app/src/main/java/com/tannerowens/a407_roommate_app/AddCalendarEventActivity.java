@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 
 public class AddCalendarEventActivity extends AppCompatActivity{
 
@@ -23,6 +25,8 @@ public class AddCalendarEventActivity extends AppCompatActivity{
     private int year;
     private User user;
     private House group;
+    private int i;/////////////////
+    private ArrayList<User> users = new ArrayList<>();///////////////////////////
     private RadioButton personal;
     private DatabaseReference mDatabase;
 
@@ -40,6 +44,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
         personal = (RadioButton) findViewById(R.id.radioMe);
 
         getHouse();
+        getHouseMems();
         configureDateText();
         configureBackButton();
         configureAddButton();
@@ -80,11 +85,21 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                 CalendarEvent event = new CalendarEvent(name, location, startTime, endTime, month, day, year);
                 if (!personal.isChecked()) {
                     if (user.getHouse() != null) {
-                        for (int i = 0; i < group.getUsers().size(); i++) {
+                      /*  for (int i = 0; i < group.getUsers().size(); i++) {
                             //User currUser = group.getUsers().get(i);
                             //currUser.addCalendarEvent(event);
                             //mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
                         }
+                    } */
+                        for (i = 0; i < users.size(); i++) {
+                            User currUser = users.get(i);
+                            currUser.addCalendarEvent(event);
+                            mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
+                        }
+                    }
+                    else {
+                        user.addCalendarEvent(event);
+                        mDatabase.child("users").child(user.getUsername()).setValue(user);
                     }
                 }
                 else {
@@ -110,6 +125,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                         }
                     }
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
@@ -117,6 +133,29 @@ public class AddCalendarEventActivity extends AppCompatActivity{
             });
         }
     }
+
+    private void getHouseMems() {
+        for(i = 0; i < group.getUsers().size(); i++) {
+            DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/users");
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot member : dataSnapshot.getChildren()) {
+                        if (group.getUsers().get(i).equals(member.getKey())) {
+                            User u = member.getValue(User.class);
+                            users.add(u);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
 
 }
 

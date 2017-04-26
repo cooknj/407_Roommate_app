@@ -36,6 +36,7 @@
         <activity android:name=".PickHouseActivity" />
         <activity android:name=".ViewScheduleEntryActivity"></activity>
         android:name=".GlobalChoreList"
+        android:name=".HouseWrapper"
 
         <activity android:name=".AddCalendarEventActivity" />
         <activity android:name=".ViewCalendarEventActivity" />
