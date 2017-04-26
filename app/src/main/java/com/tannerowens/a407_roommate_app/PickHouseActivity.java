@@ -63,15 +63,21 @@ public class PickHouseActivity extends AppCompatActivity {
             DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl
                     ("https://roommateapp-a6d3a.firebaseio.com/house");
             mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                boolean houseExists = false;
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    boolean houseExists = false;
                     House house;
+                    String houseName;
                     House old = null;
+
                     for (DataSnapshot houses: dataSnapshot.getChildren()) {//EXISTING HOUSE
-                        house = houses.getValue(House.class);
-                        if (house.getName().equals(h)){
+                        //Log.i("HOUSES", houses.toString());
+                        houseName = houses.getKey();
+                        //house = houses.getValue(House.class);
+                        //if (house.getName().equals(h)){
+                        if(houseName.equals(h)){
                             houseExists = true;
+                            house = houses.getValue(House.class);
                             if(house.getUsers().contains(user.getUsername())){
                                 user.setHouse(house.getName());
                                 HouseWrapper.setHouse(house);
@@ -83,21 +89,24 @@ public class PickHouseActivity extends AppCompatActivity {
                                 HouseWrapper.setHouse(house);
                             }
                         }
-                        if(house.getName().equals(oldHouse) && !house.getName().equals(h)){
-                            old = house;
+                        if(houseName.equals(oldHouse) && !houseName.equals(h)){
+                            old = houses.getValue(House.class);
                         }
                     }
+
                     if(!houseExists){//create a new house
                         House newHouse = new House(h,user.getUsername());
                         HouseWrapper.setHouse(newHouse);
-
                         mDatabase.child("house").child(h).setValue(newHouse);
                         user.setHouse(newHouse.getName());
                     }
-                else if (old!=null){//deletes user from old house
+
+                    if (old!=null){//deletes user from old house
                         old.removeUser(user.getUsername());
                         mDatabase.child("house").child(old.getName()).setValue(old);
+                        HouseWrapper.setHouse(old);
                     }
+
                     mDatabase.child("users").child(user.getUsername()).setValue(user);
                     finish();
                 }
