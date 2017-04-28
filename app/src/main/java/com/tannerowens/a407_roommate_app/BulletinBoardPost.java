@@ -12,6 +12,7 @@ public class BulletinBoardPost implements Serializable {
     private String title;
     private String owner;
     private String content;
+    private String firebaseID;
     private ArrayList<Message> replies = new ArrayList<>();
 
     public BulletinBoardPost(String title, String owner, String content){
@@ -50,4 +51,8 @@ public class BulletinBoardPost implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public void setID(String id){this.firebaseID = id;}
+
+    public String getID(){return firebaseID;}
 }
