@@ -33,11 +33,11 @@ import java.util.HashMap;
 
 public class AddChoresActivity extends AppCompatActivity{
     //get the global chore map variable
-    HashMap<String, ArrayList<String>> choreMap = GlobalChoreList.getChoreMap();
-    ArrayList<String> user_list;
-    House house = HouseWrapper.getHouse();
-    User user;
-    DatabaseReference mdb;
+    private HashMap<String, ArrayList<String>> choreMap = GlobalChoreList.getChoreMap();
+    private ArrayList<String> user_list;
+    private House house;
+    private User user;
+    private DatabaseReference mdb;
     boolean valid_user = true;
 
     @Override
@@ -47,6 +47,7 @@ public class AddChoresActivity extends AppCompatActivity{
 
         mdb = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
         user = (User) getIntent().getSerializableExtra("user");
+        house = user.getHouse();
 
         if(house == null) {
             Context context = getApplicationContext();
@@ -89,7 +90,7 @@ public class AddChoresActivity extends AppCompatActivity{
                 String username = username_txt.getText().toString();
 
                 //check username is valid
-                if(!user_list.contains(username)) {
+                if(!(user_list.contains(username))) {
                     Context context = getApplicationContext();
                     CharSequence text = "Invalid username entered.";
                     int duration = Toast.LENGTH_LONG;
@@ -101,6 +102,7 @@ public class AddChoresActivity extends AppCompatActivity{
                     valid_user = false;
                     configureAddChoresButton();
                 }
+                else valid_user = true;
 
                 //get & process the chore
                 EditText chore_txt = (EditText) findViewById(R.id.choreNameText);
