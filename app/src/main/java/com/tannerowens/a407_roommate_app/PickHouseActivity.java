@@ -57,31 +57,56 @@ public class PickHouseActivity extends AppCompatActivity {
             Toast.makeText(PickHouseActivity.this, "Fill in house name", Toast.LENGTH_LONG).show();
         }
         else{
-            mDatabase.child("house").addListenerForSingleValueEvent(new ValueEventListener() {
-                boolean houseExists = false;
+            //Remove user from old house:
+            final String oldHouse = user.getHouse();
+
+            DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl
+                    ("https://roommateapp-a6d3a.firebaseio.com/house");
+            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    boolean houseExists = false;
                     House house;
+                    String houseName;
+                    House old = null;
+
                     for (DataSnapshot houses: dataSnapshot.getChildren()) {//EXISTING HOUSE
-                        house = houses.getValue(House.class);
-                        if (house.getName().equals(h)){
+                        //Log.i("HOUSES", houses.toString());
+                        houseName = houses.getKey();
+                        //house = houses.getValue(House.class);
+                        //if (house.getName().equals(h)){
+                        if(houseName.equals(h)){
                             houseExists = true;
-                            /*if(house.getUsers().contains(user)){
-                                finish();
-                            }*/
-                            //else {
-                                //house.addUser(user);
+                            house = houses.getValue(House.class);
+                            if(house.getUsers().contains(user.getUsername())){
+                                user.setHouse(house.getName());
+                                HouseWrapper.setHouse(house);
+                            }
+                            else {
+                                house.addUser(user.getUsername());
                                 mDatabase.child("house").child(h).setValue(house);
                                 user.setHouse(house.getName());
-                           // }
+                                HouseWrapper.setHouse(house);
+                            }
+                        }
+                        if(houseName.equals(oldHouse) && !houseName.equals(h)){
+                            old = houses.getValue(House.class);
                         }
                     }
+
                     if(!houseExists){//create a new house
-                        //mDatabase.child("house").child(h).setValue(houseName.getText().toString());
-                        House newHouse = new House(h,user);
+                        House newHouse = new House(h,user.getUsername());
+                        HouseWrapper.setHouse(newHouse);
                         mDatabase.child("house").child(h).setValue(newHouse);
                         user.setHouse(newHouse.getName());
                     }
+
+                    if (old!=null){//deletes user from old house
+                        old.removeUser(user.getUsername());
+                        mDatabase.child("house").child(old.getName()).setValue(old);
+                        HouseWrapper.setHouse(old);
+                    }
+
                     mDatabase.child("users").child(user.getUsername()).setValue(user);
                     finish();
                 }

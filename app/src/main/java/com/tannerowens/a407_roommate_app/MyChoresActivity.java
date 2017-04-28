@@ -60,6 +60,9 @@ public class MyChoresActivity extends AppCompatActivity {
 
     //retrieval of chore data from firebase
     private void updateFromFirebase() {
+        final ArrayList<String> list;
+        final String name = user.getName().toLowerCase();
+
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -77,6 +80,7 @@ public class MyChoresActivity extends AppCompatActivity {
                         choreMap = (HashMap)child.getValue();
                     }
                 }
+                displayMyChores();
             }
 
             @Override
@@ -89,9 +93,9 @@ public class MyChoresActivity extends AppCompatActivity {
     //displays the chores on the page
     private void displayMyChores() {
         final ArrayList<String> list;
-        final String name = user.getName().toLowerCase();
+        final String username = user.getUsername().toLowerCase();
 
-        list = choreMap.get(name);
+        list = choreMap.get(username);
 
         //if the list has nothing then just return
         if(list==null) return;
@@ -117,7 +121,7 @@ public class MyChoresActivity extends AppCompatActivity {
                 list.remove(chore);
 
                 //update user's chore list
-                choreMap.put(name, list);
+                choreMap.put(username, list);
 
                 CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 

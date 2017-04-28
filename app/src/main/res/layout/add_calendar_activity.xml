@@ -100,13 +100,37 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventTimeStart" />
 
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation = "horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp">
+
+        <RadioButton
+            android:id="@+id/radioMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Event"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radioHouse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="House Event" />
+
+    </RadioGroup>
+
     <Button
-        android:background="@drawable/blue_note"
         android:id="@+id/addEvent"
-        android:layout_gravity="center_horizontal"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/blue_note"
         android:text="Add Event" />
 
 

@@ -1,8 +1,10 @@
 package com.tannerowens.a407_roommate_app;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -54,13 +56,34 @@ public class ViewCalendarEventActivity extends AppCompatActivity{
         if (events.isEmpty()) {
             TextView view = new TextView(this);
             view.setText("No Events On This Date");
+            view.setTextSize(25);
+            view.setHorizontallyScrolling(true);
+            view.setGravity(Gravity.CENTER);
+            view.setTextColor(Color.RED);
+            myLinearLayout.addView(view);
         }
         else {
+            int nextCol = 1;
             TextView view;
             for(int i = 0; i < events.size(); i++) {
                 view = new TextView(this);
-                view.setText(events.get(i).getName()+"\n" + events.get(i).getLocation() + "\n"
-                             + events.get(i).getStart() + "\n" + events.get(i).getEnd() +"\n\n\n");
+                view.setText(events.get(i).getName()+"\n" + events.get(i).getLocation() +"\n");
+                view.append(events.get(i).getStart() + "\n" + events.get(i).getEnd() + "\n");
+                view.setTextSize(25);
+                view.setHorizontallyScrolling(true);
+                view.setGravity(Gravity.CENTER);
+                if(nextCol == 1) {
+                    view.setTextColor(Color.BLUE);
+                    nextCol++;
+                }
+                else if(nextCol == 2) {
+                    view.setTextColor(Color.RED);
+                    nextCol++;
+                }
+                else {
+                    view.setTextColor(Color.MAGENTA);
+                    nextCol = 1;
+                }
                 myLinearLayout.addView(view);
             }
         }
