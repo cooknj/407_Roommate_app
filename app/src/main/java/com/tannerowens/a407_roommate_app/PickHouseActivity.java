@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class PickHouseActivity extends AppCompatActivity {
 
     private Button pickHouseButton;
@@ -50,6 +52,32 @@ public class PickHouseActivity extends AppCompatActivity {
         });
     }
 
+    private void updateHouseUsers(House h){
+        final House house = h;
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl
+                ("https://roommateapp-a6d3a.firebaseio.com/users");
+        final ArrayList<String> houseUsers = house.getUsers();
+
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User u;
+                for (DataSnapshot users: dataSnapshot.getChildren()) {
+                    if(houseUsers.contains(users.getKey().toString())){
+                        u = users.getValue(User.class);
+                        u.setHouse(house);
+                        mDatabase.child("users").child(u.getUsername()).setValue(u);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void pickHouse(){
         //join existing house
         final String h = houseName.getText().toString();
@@ -71,10 +99,7 @@ public class PickHouseActivity extends AppCompatActivity {
                     House old = null;
 
                     for (DataSnapshot houses: dataSnapshot.getChildren()) {//EXISTING HOUSE
-                        //Log.i("HOUSES", houses.toString());
                         houseName = houses.getKey();
-                        //house = houses.getValue(House.class);
-                        //if (house.getName().equals(h)){
                         if(houseName.equals(h)){
                             houseExists = true;
                             house = houses.getValue(House.class);
@@ -84,6 +109,7 @@ public class PickHouseActivity extends AppCompatActivity {
                             }
                             else {
                                 house.addUser(user.getUsername());
+                                updateHouseUsers(house);
                                 mDatabase.child("house").child(h).setValue(house);
                                 user.setHouse(house);
                                 HouseWrapper.setHouse(house);
@@ -105,10 +131,12 @@ public class PickHouseActivity extends AppCompatActivity {
 
                     if (old!=null){//deletes user from old house
                         old.removeUser(user.getUsername());
+                        updateHouseUsers(old);
                         mDatabase.child("house").child(old.getName()).setValue(old);
                         HouseWrapper.setHouse(old);
                     }
 
+                    //update old house users with house and update new house users with house
                     mDatabase.child("users").child(user.getUsername()).setValue(user);
                     finish();
                 }

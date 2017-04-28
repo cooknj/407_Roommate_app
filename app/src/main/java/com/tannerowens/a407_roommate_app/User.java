@@ -13,6 +13,7 @@ public class User implements Serializable{
     private String email;
     private String username;
     private House house;
+    private String image;
     private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>(100);
     private ArrayList<CalendarEvent> calendarEvents = new ArrayList<>();
 
@@ -25,6 +26,8 @@ public class User implements Serializable{
         this.email = email;
         String[] s = email.split("@");
         this.username = s[0];
+        this.image = "";
+        this.house = null;
     }
 
     public void removeScheduleEntry(ScheduleEntry s){
@@ -35,6 +38,14 @@ public class User implements Serializable{
             }
         }
 
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void addScheduleEntry(ScheduleEntry s){
