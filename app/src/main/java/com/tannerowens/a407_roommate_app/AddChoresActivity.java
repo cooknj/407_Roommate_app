@@ -38,6 +38,7 @@ public class AddChoresActivity extends AppCompatActivity{
     House house = HouseWrapper.getHouse();
     User user;
     DatabaseReference mdb;
+    boolean valid_user = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +57,9 @@ public class AddChoresActivity extends AppCompatActivity{
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             finish();
+        } else {
+            user_list = house.getUsers();
         }
-
-        user_list = house.getUsers();
 
         configureBackButton();
         configureAddChoresButton();
@@ -78,51 +79,56 @@ public class AddChoresActivity extends AppCompatActivity{
     //adds a chore to the chore list
     private void configureAddChoresButton() {
         Button button = (Button) findViewById(R.id.addChoreButton);
-        String[] items = new String[4];
-        final Spinner dropdown = (Spinner) findViewById(R.id.assignedToSpinner);
-
-        if (user_list != null) {
-            for (int i = 0; i < user_list.size(); i++) {
-                items[i] = user_list.get(i).toLowerCase();
-            }
-         } else {
-            items[0] = user.getUsername().toLowerCase();
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-
-        button.setOnClickListener(new View.OnClickListener() {
+         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ArrayList<String> list;
-                //get & process the name of who is assigned the chore
 
-                String username = dropdown.toString();
+                //get & process the name of who is assigned the chore
+                EditText username_txt = (EditText)findViewById(R.id.assignedToText);
+                String username = username_txt.getText().toString();
+
+                //check username is valid
+                if(!user_list.contains(username)) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Invalid username entered.";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    ((EditText)findViewById(R.id.assignedToText)).setHint(((EditText) findViewById(R.id.assignedToText)).getHint());
+                    valid_user = false;
+                    configureAddChoresButton();
+                }
 
                 //get & process the chore
                 EditText chore_txt = (EditText) findViewById(R.id.choreNameText);
                 String chore = chore_txt.getText().toString();
 
-                //add to the choreMap
-                list = choreMap.get(username);
+                if(valid_user) {
+                    //add to the choreMap
+                    list = choreMap.get(username);
 
-                if(list==null)
-                    list = new ArrayList<String>();
+                    if (list == null)
+                        list = new ArrayList<String>();
 
-                list.add(chore);
-                choreMap.put(username, list);
+                    list.add(chore);
+                    choreMap.put(username, list);
 
-                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+                    CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
-                Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Added!", Snackbar.LENGTH_SHORT);
-                sb.show();
+                    Snackbar sb = Snackbar.make(coordinatorLayout, "Chore Added!", Snackbar.LENGTH_SHORT);
+                    sb.show();
 
-                //clear text fields for multiple-entry
-                //((Spinner)findViewById(R.id.assignedToText)).setHint(((EditText) findViewById(R.id.assignedToText)).getHint());
-                //((EditText)findViewById(R.id.choreNameText)).setHint(((EditText) findViewById(R.id.choreNameText)).getHint());
+                    //clear text fields for multiple-entry
+                    ((EditText) findViewById(R.id.assignedToText)).setText("");
+                    ((EditText) findViewById(R.id.choreNameText)).setText("");
+                    ((EditText) findViewById(R.id.assignedToText)).setHint(((EditText) findViewById(R.id.assignedToText)).getHint());
+                    ((EditText) findViewById(R.id.choreNameText)).setHint(((EditText) findViewById(R.id.choreNameText)).getHint());
 
-                storeChoresInFirebase();
+                    storeChoresInFirebase();
+                }
             }
         });
     }
