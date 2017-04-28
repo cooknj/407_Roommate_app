@@ -2,6 +2,7 @@ package com.tannerowens.a407_roommate_app;
 
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,6 +37,14 @@ public class OurCalendarActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK) {
+            user = (User) data.getSerializableExtra("user");
+        }
+    }
+
     private void configureBackButton() {
         Button button = (Button) findViewById(R.id.back);
         button.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +65,7 @@ public class OurCalendarActivity extends AppCompatActivity {
                 intent.putExtra("day", selectedDay);
                 intent.putExtra("month", selectedMonth );
                 intent.putExtra("year", selectedYear );
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
     }
@@ -102,4 +111,5 @@ public class OurCalendarActivity extends AppCompatActivity {
     }
 
 }
+
 
