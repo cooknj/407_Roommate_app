@@ -6,24 +6,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * Created by Nick on 4/28/2017.
  */
 
-public class AddImageActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddImageActivity extends AppCompatActivity {
 
     private static final int SELECT_PICTURE = 100;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "AddImageActivity";
 
     CoordinatorLayout coordinatorLayout;
-    FloatingActionButton btnSelectImage;
     AppCompatImageView imgView;
 
     @Override
@@ -33,10 +31,30 @@ public class AddImageActivity extends AppCompatActivity implements View.OnClickL
 
         // Find the views...
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-        btnSelectImage = (FloatingActionButton) findViewById(R.id.btnSelectImage);
         imgView = (AppCompatImageView) findViewById(R.id.imgView);
 
-        btnSelectImage.setOnClickListener(this);
+        configureBackButton();
+        configureImageButton();
+    }
+
+    private void configureBackButton() {
+        Button button = (Button) findViewById(R.id.backButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void configureImageButton() {
+        Button btnSelectImage = (Button) findViewById(R.id.addImg);
+        btnSelectImage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                openImageChooser();
+            }
+        });
     }
 
     /* Choose an image from Gallery */
@@ -74,11 +92,6 @@ public class AddImageActivity extends AppCompatActivity implements View.OnClickL
         }
         cursor.close();
         return res;
-    }
-
-    @Override
-    public void onClick(View v) {
-        openImageChooser();
     }
 
 }
