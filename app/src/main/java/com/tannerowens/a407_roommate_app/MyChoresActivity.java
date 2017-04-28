@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -44,7 +45,7 @@ public class MyChoresActivity extends AppCompatActivity {
 
         configureBackButton();
         updateFromFirebase();
-        displayMyChores();
+        //displayMyChores();
     }
 
     //back button config (back to chores activity)
@@ -60,9 +61,6 @@ public class MyChoresActivity extends AppCompatActivity {
 
     //retrieval of chore data from firebase
     private void updateFromFirebase() {
-        final ArrayList<String> list;
-        final String name = user.getName().toLowerCase();
-
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -116,7 +114,6 @@ public class MyChoresActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //get the chore that was clicked
                 String chore = adapter.getItem(position);
-
                 //update the local list variable for xml changes
                 list.remove(chore);
 
@@ -132,17 +129,19 @@ public class MyChoresActivity extends AppCompatActivity {
 
                 //update the firebase db
                 storeChoresInFirebase();
+                //updateFromFirebase();
             }
         });
 
         }
 
         public void storeChoresInFirebase() {
-            mDatabase.child("chores").addListenerForSingleValueEvent(new ValueEventListener() {
+            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    mDatabase.child("chores").setValue(choreMap);
-                }
+                public void onDataChange(DataSnapshot snapshot) {
+                   DatabaseReference ref = mDatabase.child(user.getUsername());
+                    ref.setValue(choreMap.get(user.getUsername()));
+            }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
