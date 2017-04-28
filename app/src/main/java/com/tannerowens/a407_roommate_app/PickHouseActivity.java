@@ -58,7 +58,7 @@ public class PickHouseActivity extends AppCompatActivity {
         }
         else{
             //Remove user from old house:
-            final String oldHouse = user.getHouse();
+            final House oldHouse = user.getHouse();
 
             DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl
                     ("https://roommateapp-a6d3a.firebaseio.com/house");
@@ -79,18 +79,20 @@ public class PickHouseActivity extends AppCompatActivity {
                             houseExists = true;
                             house = houses.getValue(House.class);
                             if(house.getUsers().contains(user.getUsername())){
-                                user.setHouse(house.getName());
+                                user.setHouse(house);
                                 HouseWrapper.setHouse(house);
                             }
                             else {
                                 house.addUser(user.getUsername());
                                 mDatabase.child("house").child(h).setValue(house);
-                                user.setHouse(house.getName());
+                                user.setHouse(house);
                                 HouseWrapper.setHouse(house);
                             }
                         }
-                        if(houseName.equals(oldHouse) && !houseName.equals(h)){
-                            old = houses.getValue(House.class);
+                        if(oldHouse != null ){
+                            if (houseName.equals(oldHouse.getName()) && !houseName.equals(h)) {
+                                old = houses.getValue(House.class);
+                            }
                         }
                     }
 
@@ -98,7 +100,7 @@ public class PickHouseActivity extends AppCompatActivity {
                         House newHouse = new House(h,user.getUsername());
                         HouseWrapper.setHouse(newHouse);
                         mDatabase.child("house").child(h).setValue(newHouse);
-                        user.setHouse(newHouse.getName());
+                        user.setHouse(newHouse);
                     }
 
                     if (old!=null){//deletes user from old house
