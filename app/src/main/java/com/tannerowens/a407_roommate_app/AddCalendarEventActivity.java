@@ -86,29 +86,18 @@ public class AddCalendarEventActivity extends AppCompatActivity{
 
                 CalendarEvent event = new CalendarEvent(name, location, startTime, endTime, month, day, year);
                 if (!personal.isChecked()) {
-                    //if (user.getHouse() != null) {
-                      /*  for (int i = 0; i < group.getUsers().size(); i++) {
-                            //User currUser = group.getUsers().get(i);
-                            //currUser.addCalendarEvent(event);
-                            //mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
-                        }
-                    } */
+                    if (group != null) {
                         for (i = 0; i < users.size(); i++) {
                             if (i != 0) {
                                 User currUser = users.get(i);
                                 currUser.addCalendarEvent(event);
                                 mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
-                            }
-                            else {
+                            } else {
                                 user.addCalendarEvent(event);
                                 mDatabase.child("users").child(user.getUsername()).setValue(user);
                             }
                         }
-                   /* }
-                    else {
-                        user.addCalendarEvent(event);
-                        mDatabase.child("users").child(user.getUsername()).setValue(user);
-                    } */
+                    }
                 }
                 else {
                     user.addCalendarEvent(event);
@@ -176,4 +165,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
     }
 
 
+
+
 }
+
