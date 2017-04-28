@@ -186,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddImageActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });

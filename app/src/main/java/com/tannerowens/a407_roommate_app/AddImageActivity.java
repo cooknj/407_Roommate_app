@@ -20,6 +20,7 @@ public class AddImageActivity extends AppCompatActivity {
 
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "AddImageActivity";
+    private User user;
 
     CoordinatorLayout coordinatorLayout;
     AppCompatImageView imgView;
@@ -27,7 +28,9 @@ public class AddImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.add_image_activity);
+
+        user = (User) getIntent().getSerializableExtra("user");
 
         // Find the views...
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
@@ -73,6 +76,8 @@ public class AddImageActivity extends AppCompatActivity {
                 if (null != selectedImageUri) {
                     // Get the path from the Uri
                     String path = getPathFromURI(selectedImageUri);
+                    //set path to user image path
+
                     Log.i(TAG, "Image Path : " + path);
                     // Set the image in ImageView
                     imgView.setImageURI(selectedImageUri);
