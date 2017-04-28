@@ -14,20 +14,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/addImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Pic" />
+
         <TextView
             android:id="@+id/nameText"
-            android:layout_width="304dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="name"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-        <Button
-            android:id="@+id/addImageButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Pic" />
     </LinearLayout>
 
     <LinearLayout
