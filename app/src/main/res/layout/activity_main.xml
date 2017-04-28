@@ -1,99 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tannerowens.a407_roommate_app.MainActivity">
+    android:background="@drawable/paper_background"
+    tools:context="com.tannerowens.a407_roommate_app.MainActivity"
+    android:orientation="vertical"
+    android:baselineAligned="false">
 
-    <Button
-        android:id="@+id/bulletinBoardButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bulletin Board"
-        android:layout_marginLeft="112dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="60dp" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/calendarButton"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/addImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Pic" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calendar"
-        android:layout_marginLeft="133dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/bulletinBoardButton" />
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/scheduleButton"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/scheduleButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/blue_note"
+                android:text="Schedule" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:background="@drawable/green_note"
+                android:id="@+id/whiteBoardButton"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="WhiteBoard" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Schedule"
-        android:layout_marginLeft="134dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/calendarButton" />
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/whiteBoardButton"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:background="@drawable/orange_note"
+                android:id="@+id/calendarButton"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Calendar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:background="@drawable/pink_note"
+                android:id="@+id/choresButton"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Chores"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="WhiteBoard"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="231dp"
-        android:layout_marginLeft="124dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/choresButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chores"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="286dp"
-        android:layout_marginLeft="136dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/billsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bills"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="341dp"
-        android:layout_marginLeft="136dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+            <Button
+                android:background="@drawable/purple_note"
+                android:id="@+id/billsButton"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:text="Bills"/>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/nameText"
-        android:layout_width="370dp"
-        android:layout_height="31dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="6dp"
-        android:text="name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/signOutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SIGN OUT"
-        android:layout_marginRight="-5dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="-1dp" />
+            <Button
+                android:background="@drawable/yellow_note"
+                android:id="@+id/bulletinBoardButton"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:text="Bulletin Board"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/pickHouseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="-1dp"
-        android:text="Pick House"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/pickHouseButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/house_image"
+                android:text="Pick House" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:background="@drawable/x_image"
+                android:id="@+id/signOutButton"
+                android:layout_width="75dp"
+                android:layout_gravity="center"
+                android:layout_height="75dp"
+                android:layout_marginBottom="10dp"
+                android:text="SIGN OUT"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

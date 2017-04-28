@@ -2,7 +2,6 @@ package com.tannerowens.a407_roommate_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -37,21 +36,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, SignUpActivity.class);
         startActivityForResult(i, 1);
 
-        /*mDatabase.child("users").child("username").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                user = (User) dataSnapshot.child("users").child(username).getValue();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
-
-        //email and name are set in onActivityResult()
-        //////////////////////////////////////////////////////////////
-
         //configureBillsButton();
         //configureBulletinBoardButton();
         //configureWhiteBoardButton();
@@ -60,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         configureScheduleButton();
         configureSignOutButton();
         configurePickHouseButton();
+        configureAddImageButton();
     }
 
     @Override
@@ -119,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, OurCalendarActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
@@ -192,6 +178,18 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+    }
+
+    private void configureAddImageButton() {
+        Button button = (Button) findViewById(R.id.addImageButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddImageActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
+        });
     }
 
 }

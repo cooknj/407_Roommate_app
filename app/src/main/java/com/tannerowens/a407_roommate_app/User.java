@@ -12,8 +12,9 @@ public class User implements Serializable{
     private String name;
     private String email;
     private String username;
-    private String house;
+    private House house;
     private ArrayList<ScheduleEntry> scheduleEntries = new ArrayList<>(100);
+    private ArrayList<CalendarEvent> calendarEvents = new ArrayList<>();
 
     public User(){
 
@@ -64,11 +65,11 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    public String getHouse() {
+    public House getHouse() {
         return house;
     }
 
-    public void setHouse(String house) {
+    public void setHouse(House house) {
         this.house = house;
     }
 
@@ -79,4 +80,12 @@ public class User implements Serializable{
     public void setScheduleEntries(ArrayList<ScheduleEntry> scheduleEntries) {
         this.scheduleEntries = scheduleEntries;
     }
+    
+    public void setCalendarEvents(ArrayList<CalendarEvent> calendarEvents) {
+        this.calendarEvents = calendarEvents;
+    }
+
+    public void addCalendarEvent(CalendarEvent s) {this.calendarEvents.add(s);}
+
+    public ArrayList<CalendarEvent> getCalendarEvents() {return calendarEvents;}
 }
