@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         configureScheduleButton();
         configureSignOutButton();
         configurePickHouseButton();
+        configureAddImageButton();
     }
 
     @Override
@@ -177,6 +178,17 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+    }
+
+    private void configureAddImageButton() {
+        Button button = (Button) findViewById(R.id.addImageButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddImageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
