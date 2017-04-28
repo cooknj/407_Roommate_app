@@ -28,6 +28,8 @@
             android:label="RoomMate"/>
         <activity android:name=".MyChoresActivity"
             android:label="RoomMate"/>
+        <activity android:name=".AddImageActivity"
+            android:label="RoomMate"/>
         <activity
             android:name=".SignUpActivity"
             android:label="RoomMate"
