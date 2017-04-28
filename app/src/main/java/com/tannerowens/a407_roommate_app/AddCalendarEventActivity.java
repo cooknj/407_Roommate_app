@@ -177,7 +177,3 @@ public class AddCalendarEventActivity extends AppCompatActivity{
 
 
 }
-
-
-
-
