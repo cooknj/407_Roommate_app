@@ -3,8 +3,17 @@ package com.tannerowens.a407_roommate_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -55,6 +64,7 @@ public class ChoresActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChoresActivity.this, UncompletedChoresActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
@@ -66,8 +76,10 @@ public class ChoresActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChoresActivity.this, AddChoresActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
     }
+
 }

@@ -7,75 +7,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddChoresActivity">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/paper_background"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/back_arrow"
+                android:text="Back" />
 
             <TextView
                 android:id="@+id/titleText"
-                android:layout_width="164dp"
-                android:layout_height="47dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="100dp"
+                android:layout_weight="0.00"
                 android:fontFamily="casual"
+                android:gravity="center"
                 android:text="Add A Chore"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@+id/backButton"
-                android:layout_marginLeft="14dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="16dp"
-                tools:layout_editor_absoluteX="125dp" />
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                tools:layout_editor_absoluteY="16dp"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+        </LinearLayout>
 
-            <EditText
-                android:id="@+id/assignedToText"
-                android:layout_width="352dp"
-                android:layout_height="58dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:ems="10"
-                android:hint="Assigned To"
-                android:inputType="textPersonName"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/choreNameText" />
+        <EditText
+            android:id="@+id/choreNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="100dp"
+            android:ems="10"
+            android:hint="Chore Name"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/choreNameText"
-                android:layout_width="352dp"
-                android:layout_height="58dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="96dp"
-                android:ems="10"
-                android:hint="Chore Name"
-                android:inputType="textPersonName"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/assignedToText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Assigned To"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/addChoreButton"
-                android:layout_width="145dp"
-                android:layout_height="69dp"
-                android:text="Add Chore"
-                android:layout_marginTop="33dp"
-                app:layout_constraintTop_toBottomOf="@+id/assignedToText"
-                android:layout_marginLeft="107dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+        <Button
+            android:id="@+id/addChoreButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/blue_note"
+            android:text="Add Chore" />
 
-        </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

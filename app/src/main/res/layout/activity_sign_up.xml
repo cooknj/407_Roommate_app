@@ -2,12 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/paper_background"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textPersonName"
@@ -19,6 +22,8 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPersonName"
@@ -28,6 +33,8 @@
         android:id="@+id/nameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:ems="10"
         android:hint="name"
         android:inputType="textPersonName"
@@ -35,15 +42,19 @@
 
     <Button
         android:id="@+id/signIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/blue_note"
         android:text="Sign In" />
 
     <Button
         android:id="@+id/newUserButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/purple_note"
         android:text="New User" />
 </LinearLayout>
