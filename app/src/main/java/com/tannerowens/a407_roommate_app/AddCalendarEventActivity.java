@@ -1,6 +1,8 @@
 package com.tannerowens.a407_roommate_app;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -92,9 +94,15 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                         }
                     } */
                         for (i = 0; i < users.size(); i++) {
-                            User currUser = users.get(i);
-                            currUser.addCalendarEvent(event);
-                            mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
+                            if (i != 0) {
+                                User currUser = users.get(i);
+                                currUser.addCalendarEvent(event);
+                                mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
+                            }
+                            else {
+                                user.addCalendarEvent(event);
+                                mDatabase.child("users").child(user.getUsername()).setValue(user);
+                            }
                         }
                    /* }
                     else {
@@ -106,6 +114,9 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                     user.addCalendarEvent(event);
                     mDatabase.child("users").child(user.getUsername()).setValue(user);
                 }
+                Intent intent = new Intent();
+                intent.putExtra("user" , user );
+                setResult(Activity.RESULT_OK, intent);
                 finish();
 
             }
@@ -166,6 +177,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
 
 
 }
+
 
 
 
