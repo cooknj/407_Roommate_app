@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+    android:id="@+id/BulletinReplies"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+
+        <!--
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="wrap_content"
+                android:src="@drawable/profile_pic_placeholder"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"/>
+            <TextView
+                android:id="@+id/bulletinTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_alignTop="@+id/profilePic"
+                android:layout_toLeftOf="@+id/profilePic"
+                android:text="Relative layout"/>
+            <TextView
+                android:id="@+id/bulletinContentText"
+                android:layout_width="wrap_content"
+                android:text="Compound button"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bulletinTitleText"
+                android:layout_alignLeft="@+id/bulletinTitleText"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    -->
+</ScrollView>
+
+    <LinearLayout
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true">
+        <EditText
+            android:id="@+id/ReplyText"
+            android:inputType="textMultiLine"
+            android:text="Type Reply Here"
+            android:background="#858585"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent">
+        </EditText>
+        <Button
+            android:id="@+id/ReplyButton"
+            android:text="Reply"
+            android:background="@android:color/holo_red_light"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
+        </Button>
+
+    </LinearLayout>
+    <!--
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/replyText"
+            android:layout_width="352dp"
+            android:layout_height="58dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:text="Type Reply Here"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:id="@+id/ConfirmReplyButton"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@android:color/holo_red_light"
+            android:textSize="40sp"
+            android:text="New Post" />
+    </LinearLayout>
+    -->
+</RelativeLayout>

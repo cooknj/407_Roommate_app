@@ -24,6 +24,10 @@ import java.util.HashMap;
 
 public class UncompletedChoresActivity extends AppCompatActivity{
     HashMap<String, ArrayList<String>> choreMap = GlobalChoreList.getChoreMap();
+    User user;
+    House house;
+    ArrayList<String> user_list;
+
     private DatabaseReference mDatabase;
 
     @Override
@@ -32,6 +36,9 @@ public class UncompletedChoresActivity extends AppCompatActivity{
         setContentView(R.layout.uncompleted_chores);
 
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/chores");
+        user = (User) getIntent().getSerializableExtra("user");
+        house = user.getHouse();
+        user_list = house.getUsers();
 
         configureBackButton();
         updateFromFirebase();
@@ -56,11 +63,13 @@ public class UncompletedChoresActivity extends AppCompatActivity{
 
         //populate list
         for(String name : choreMap.keySet()) {
-            for(String chore : choreMap.get(name)) {
-                HashMap<String, String> item = new HashMap<String, String>();
-                item.put("chore", chore);
-                item.put("name", name);
-                list.add(item);
+            if(user_list.contains(name)) {
+                for (String chore : choreMap.get(name)) {
+                    HashMap<String, String> item = new HashMap<String, String>();
+                    item.put("chore", chore);
+                    item.put("name", name);
+                    list.add(item);
+                }
             }
         }
 
