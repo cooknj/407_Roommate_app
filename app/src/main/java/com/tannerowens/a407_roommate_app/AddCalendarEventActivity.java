@@ -86,14 +86,18 @@ public class AddCalendarEventActivity extends AppCompatActivity{
 
                 CalendarEvent event = new CalendarEvent(name, location, startTime, endTime, month, day, year);
                 if (!personal.isChecked()) {
-                    //if (user.getHouse() != null) {
-                      /*  for (int i = 0; i < group.getUsers().size(); i++) {
-                            //User currUser = group.getUsers().get(i);
-                            //currUser.addCalendarEvent(event);
-                            //mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
+                    if (group != null) {
+                        for (int i = 0; i < users.size(); i++) {
+                            User currUser = users.get(i);
+                            currUser.addCalendarEvent(event);
+                            mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
                         }
-                    } */
-                        for (i = 0; i < users.size(); i++) {
+                    }
+                    else {
+                        user.addCalendarEvent(event);
+                        mDatabase.child("users").child(user.getUsername()).setValue(user);
+                    }
+                      /*  for (i = 0; i < users.size(); i++) {
                             if (i != 0) {
                                 User currUser = users.get(i);
                                 currUser.addCalendarEvent(event);
@@ -103,7 +107,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                                 user.addCalendarEvent(event);
                                 mDatabase.child("users").child(user.getUsername()).setValue(user);
                             }
-                        }
+                        } */
                    /* }
                     else {
                         user.addCalendarEvent(event);
@@ -156,7 +160,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot member : dataSnapshot.getChildren()) {
-                            if (group.getUsers().get(i).equals(member.getKey())) {
+                            if (group.getUsers().get(i).equals(member.getKey().toString())) {
                                 User u = member.getValue(User.class);
                                 users.add(u);
                             }
