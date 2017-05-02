@@ -3,10 +3,6 @@ package com.tannerowens.a407_roommate_app;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by fgtho on 4/8/2017.
- */
-
 public class Whiteboard implements Serializable {
 
     private ArrayList<String> members;

@@ -29,10 +29,6 @@ import static com.tannerowens.a407_roommate_app.R.id.bulletinContent;
 import static com.tannerowens.a407_roommate_app.R.id.bulletinTitle;
 import static com.tannerowens.a407_roommate_app.R.id.postButton;
 
-/**
- * Created by fgtho on 4/21/2017.
- */
-
 public class ViewBoardActivity  extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

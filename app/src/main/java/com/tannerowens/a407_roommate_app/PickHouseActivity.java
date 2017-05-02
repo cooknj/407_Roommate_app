@@ -15,10 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Collections;
-=======
->>>>>>> refs/remotes/origin/master
 
 public class PickHouseActivity extends AppCompatActivity {
 

@@ -23,10 +23,6 @@ import static com.tannerowens.a407_roommate_app.R.id.bulletinContent;
 import static com.tannerowens.a407_roommate_app.R.id.cancelButton;
 import static com.tannerowens.a407_roommate_app.R.id.bulletinTitle;
 
-/**
- * Created by fgtho on 4/12/2017.
- */
-
 public class AddBulletinActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

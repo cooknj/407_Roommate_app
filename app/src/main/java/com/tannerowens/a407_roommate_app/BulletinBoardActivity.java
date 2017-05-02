@@ -23,11 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 
 //import static com.tannerowens.a407_roommate_app.R.id.addPost;
 
-
-/**
- * Created by fgtho on 4/8/2017.
- */
-
 public class BulletinBoardActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

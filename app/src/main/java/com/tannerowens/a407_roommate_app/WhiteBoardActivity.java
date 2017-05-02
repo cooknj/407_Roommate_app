@@ -24,11 +24,6 @@ import java.util.Map;
 
 //import static com.tannerowens.a407_roommate_app.R.id.addPost;
 
-
-/**
- * Created by fgtho on 4/8/2017.
- */
-
 public class WhiteBoardActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
