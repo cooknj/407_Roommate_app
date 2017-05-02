@@ -2,19 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/paper_background">
+
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:background="@drawable/back_arrow"
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Back" />
+    </LinearLayout>
 
     <ScrollView
     android:id="@+id/BulletinReplies"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:scrollbars="none" >
+    android:scrollbars="none"
+    android:paddingTop="60dp"
+    android:paddingBottom="60dp">
 
-        <!--
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/repliesHolder"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <!--
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,8 +63,8 @@
                 android:layout_alignLeft="@+id/bulletinTitleText"/>
 
         </RelativeLayout>
+        -->
     </LinearLayout>
-    -->
 </ScrollView>
 
     <LinearLayout
@@ -54,9 +74,9 @@
         <EditText
             android:id="@+id/ReplyText"
             android:inputType="textMultiLine"
-            android:text="Type Reply Here"
+            android:hint="Type Reply Here"
             android:background="#858585"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:layout_width="fill_parent">
         </EditText>
@@ -64,8 +84,10 @@
             android:id="@+id/ReplyButton"
             android:text="Reply"
             android:background="@android:color/holo_red_light"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:padding="2dp">
         </Button>
 
     </LinearLayout>

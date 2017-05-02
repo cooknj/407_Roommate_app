@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, SignUpActivity.class);
         startActivityForResult(i, 1);
 
-        //configureBillsButton();
-        //configureBulletinBoardButton();
-        //configureWhiteBoardButton();
+        configureBillsButton();
+        configureBulletinBoardButton();
+        configureWhiteBoardButton();
         configureCalendarButton();
         configureChoresButton();
         configureScheduleButton();
@@ -86,17 +86,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    /*private void configureBulletinBoardButton() {
+    private void configureBulletinBoardButton() {
         Button button = (Button) findViewById(R.id.bulletinBoardButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, BulletinBoardActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
                 //finish();  I think finish might end the activity which in this case we dont want to do
             }
         });
-    }*/
+    }
 
     private void configureCalendarButton() {
         Button button = (Button) findViewById(R.id.calendarButton);
@@ -134,12 +135,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-/*    private void configureWhiteBoardButton() {
+    private void configureWhiteBoardButton() {
         Button button = (Button) findViewById(R.id.whiteBoardButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, WhiteBoardActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }*/
+    }
 
     private void configureSignOutButton(){
         Button button = (Button) findViewById(R.id.signOutButton);

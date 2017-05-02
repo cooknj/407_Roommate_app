@@ -88,4 +88,9 @@ public class User implements Serializable{
     public void addCalendarEvent(CalendarEvent s) {this.calendarEvents.add(s);}
 
     public ArrayList<CalendarEvent> getCalendarEvents() {return calendarEvents;}
+
+    @Override
+    public String toString(){
+        return this.getUsername() + " " + this.getName();
+    }
 }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.GridLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.graphics.Color;
+import android.view.Gravity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,83 +33,36 @@ import static com.tannerowens.a407_roommate_app.R.id.postButton;
  * Created by fgtho on 4/21/2017.
  */
 
-public class ViewBulletinActivity  extends AppCompatActivity {
+public class ViewBoardActivity  extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-    private BulletinBoardPost thisPost;
+    private Whiteboard thisBoard;
     private User user;
     private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bulletin_reply);
+        setContentView(R.layout.reply_board);
 
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/");
         user = (User) getIntent().getSerializableExtra("user");
-        thisPost = (BulletinBoardPost) getIntent().getSerializableExtra("ParentPost");
-        id = thisPost.getID();
+        thisBoard = (Whiteboard) getIntent().getSerializableExtra("ParentBoard");
+        id = thisBoard.getID();
 
-        generateParentPost();
         configureBackButton();
         generateReplyList();
         configureReplyButton();
-
-        if(thisPost.getOwner().equals(user.getName())){
-            generateRemoveText();
-        }
     }
 
-    private void generateParentPost(){
-        //ScrollView scrollView = (ScrollView) findViewById(R.id.BulletinReplies);
-        LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinReplies).findViewById(R.id.repliesHolder);
-
-        int t = thisPost.getTitle().length();
-        int o = thisPost.getOwner().length();
-        int c = thisPost.getContent().length();
-
-
-        Spannable span = new SpannableString(thisPost.getTitle() + "\n" +  thisPost.getOwner() + "\n" + thisPost.getContent());
-        //Big font till you find `\n`
-        span.setSpan(new RelativeSizeSpan(1.3f), 0, t, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        //Smallest font between '\n's
-        span.setSpan(new RelativeSizeSpan(0.9f), t, (t+o+1), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        //Medium font to end
-        span.setSpan(new RelativeSizeSpan(1.0f), (t+o+1), (c+(t+o+1)+1), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        //Assign the text to the button with a red background
-        Button titleButton = new Button(this);
-        titleButton.setAllCaps(false);
-        titleButton.setText(span);
-        titleButton.setBackgroundColor(Color.parseColor("#FF0000"));
-
-        //Set the posts margins and padding
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        params.setMargins(20, 25, 25, 20);
-        titleButton.setPadding(10,20,10,20);
-
-        titleButton.setLayoutParams(params);
-
-        //Add the button to the view
-
-        titleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String bulletinID = user.getHouse().getName() + " bulletins";
-                mDatabase.child(bulletinID).child(id).removeValue();
-                finish();
-            }
-        });
-        linearView.addView(titleButton);
-    }
 
     private void generateReplyList(){
-        String bulletinRoot = thisPost.getID();
+        String boardRoot = thisBoard.getID();
 
-        mDatabase.child(bulletinRoot).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child(boardRoot).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                thisPost = dataSnapshot.getValue(BulletinBoardPost.class);
+                thisBoard = dataSnapshot.getValue(Whiteboard.class);
             }
 
             @Override
@@ -117,10 +71,10 @@ public class ViewBulletinActivity  extends AppCompatActivity {
             }
         });
 
-        final ArrayList<Message> replies = thisPost.getReplies();
+        final ArrayList<Message> replies = thisBoard.getMessages();
 
 
-        LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinReplies).findViewById(R.id.repliesHolder);
+        LinearLayout linearView = (LinearLayout) findViewById(R.id.BoardReplies).findViewById(R.id.repliesHolder);
 
         if(!replies.isEmpty()) {
             for (int i = 0; i < replies.size(); i++) {
@@ -139,16 +93,24 @@ public class ViewBulletinActivity  extends AppCompatActivity {
 
                 text.setText(span);
 
-                //Set reply background to white
-                int white = Color.parseColor("#FFFFFF");
-                text.setBackgroundColor(white);
-
                 //Set upper and lower margins for replies
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
                 params.setMargins(20, 25, 25, 20);
                 text.setLayoutParams(params);
                 text.setPadding(5,5,5,5);
-                text.setTextColor(Color.parseColor("#000000"));
+
+                if(replies.get(i).getPoster().equals(user.getName())){
+                    //Set reply background to white
+                    text.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    text.setTextColor(Color.parseColor("#000000"));
+                    text.setGravity(Gravity.LEFT);
+                }
+                else{
+                    //Set reply backbround to black
+                    text.setBackgroundColor(Color.parseColor("#000000"));
+                    text.setTextColor(Color.parseColor("#FFFFFF"));
+                    text.setGravity(Gravity.RIGHT);
+                }
 
                 //Add reply to view
                 linearView.addView(text);
@@ -176,15 +138,15 @@ public class ViewBulletinActivity  extends AppCompatActivity {
     private void addReply (String poster, String content){
         //Create the reply as a message object and add it to the list of replies
         Message newReply = new Message(poster,content);
-        BulletinBoardPost postToUpdate = (BulletinBoardPost) getIntent().getSerializableExtra("ParentPost");
-        postToUpdate.addReply(newReply);
+        Whiteboard boardToUpdate = (Whiteboard) getIntent().getSerializableExtra("ParentBoard");
+        boardToUpdate.addMessage(newReply);
 
         //generate the house id where this bulletin is located that this reply should be added to
         user = (User) getIntent().getSerializableExtra("user");
-        String houseBulletinsID = user.getHouse().getName().trim() + " bulletins";
+        String houseBoardsID = user.getHouse().getName().trim() + " whiteboards";
 
         //update the bulletin in the database
-        mDatabase.child(houseBulletinsID).child(postToUpdate.getID()).setValue(postToUpdate);
+        mDatabase.child(houseBoardsID).child(boardToUpdate.getID()).setValue(boardToUpdate);
         showAddedReply(poster, content);
     }
 
@@ -193,7 +155,7 @@ public class ViewBulletinActivity  extends AppCompatActivity {
         ((EditText) findViewById(R.id.ReplyText)).setText("");
         ((EditText) findViewById(R.id.ReplyText)).setHint(((EditText) findViewById(R.id.ReplyText)).getHint());
 
-        LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinReplies).findViewById(R.id.repliesHolder);
+        LinearLayout linearView = (LinearLayout) findViewById(R.id.BoardReplies).findViewById(R.id.repliesHolder);
         TextView text = new TextView(this);
 
         int p = poster.length();
@@ -210,6 +172,7 @@ public class ViewBulletinActivity  extends AppCompatActivity {
         //Set reply background to white
         int white = Color.parseColor("#FFFFFF");
         text.setBackgroundColor(white);
+        text.setGravity(Gravity.LEFT);
 
         //Set upper and lower margins for replies
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -235,15 +198,5 @@ public class ViewBulletinActivity  extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void generateRemoveText(){
-        LinearLayout layoutTop = (LinearLayout) findViewById(R.id.title);
-        layoutTop.bringToFront();
-
-        TextView text = new TextView(this);
-        text.setText("Tap red box to delete this post!");
-        text.setPadding(200,10,10,10);
-        layoutTop.addView(text);
     }
 }
