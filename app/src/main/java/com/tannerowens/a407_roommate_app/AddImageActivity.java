@@ -76,6 +76,7 @@ public class AddImageActivity extends AppCompatActivity {
                 if (null != selectedImageUri) {
                     // Get the path from the Uri
                     String path = getPathFromURI(selectedImageUri);
+                    user.setImage(path);
                     //set path to user image path
 
                     Log.i(TAG, "Image Path : " + path);

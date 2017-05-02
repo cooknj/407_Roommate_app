@@ -1,6 +1,8 @@
 package com.tannerowens.a407_roommate_app;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -84,18 +86,28 @@ public class AddCalendarEventActivity extends AppCompatActivity{
 
                 CalendarEvent event = new CalendarEvent(name, location, startTime, endTime, month, day, year);
                 if (!personal.isChecked()) {
-                    //if (user.getHouse() != null) {
-                      /*  for (int i = 0; i < group.getUsers().size(); i++) {
-                            //User currUser = group.getUsers().get(i);
-                            //currUser.addCalendarEvent(event);
-                            //mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
-                        }
-                    } */
-                        for (i = 0; i < users.size(); i++) {
+                    if (group != null) {
+                        for (int i = 0; i < users.size(); i++) {
                             User currUser = users.get(i);
                             currUser.addCalendarEvent(event);
                             mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
                         }
+                    }
+                    else {
+                        user.addCalendarEvent(event);
+                        mDatabase.child("users").child(user.getUsername()).setValue(user);
+                    }
+                      /*  for (i = 0; i < users.size(); i++) {
+                            if (i != 0) {
+                                User currUser = users.get(i);
+                                currUser.addCalendarEvent(event);
+                                mDatabase.child("users").child(currUser.getUsername()).setValue(currUser);
+                            }
+                            else {
+                                user.addCalendarEvent(event);
+                                mDatabase.child("users").child(user.getUsername()).setValue(user);
+                            }
+                        } */
                    /* }
                     else {
                         user.addCalendarEvent(event);
@@ -106,6 +118,9 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                     user.addCalendarEvent(event);
                     mDatabase.child("users").child(user.getUsername()).setValue(user);
                 }
+                Intent intent = new Intent();
+                intent.putExtra("user" , user );
+                setResult(Activity.RESULT_OK, intent);
                 finish();
 
             }
@@ -145,7 +160,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot member : dataSnapshot.getChildren()) {
-                            if (group.getUsers().get(i).equals(member.getKey())) {
+                            if (group.getUsers().get(i).equals(member.getKey().toString())) {
                                 User u = member.getValue(User.class);
                                 users.add(u);
                             }
@@ -166,6 +181,7 @@ public class AddCalendarEventActivity extends AppCompatActivity{
 
 
 }
+
 
 
 
