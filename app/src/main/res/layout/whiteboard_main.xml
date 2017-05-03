@@ -29,9 +29,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textStyle="bold"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="110dp"/>
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <ScrollView

@@ -31,9 +31,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textStyle="bold"
-            android:layout_marginLeft="75dp"
-            android:layout_marginRight="125dp"/>
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <EditText
