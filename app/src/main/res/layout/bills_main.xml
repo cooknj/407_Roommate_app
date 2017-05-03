@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/paper_background">
+
+    <LinearLayout
+        android:id="@+id/notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/bigBackArrow"
+        android:paddingTop="65dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:text="This feature coming soon!"
+            android:textSize="50dp"
+            android:gravity="center"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:paddingTop="270dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:text="- RoomMate Dev Team"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bigBackArrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="100dp">
+
+        <Button
+            android:background="@drawable/back_arrow"
+            android:id="@+id/bigBackButton"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:text="Back"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</RelativeLayout>

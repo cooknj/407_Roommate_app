@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PickHouseActivity extends AppCompatActivity {
 
@@ -138,6 +139,7 @@ public class PickHouseActivity extends AppCompatActivity {
 
                     //update old house users with house and update new house users with house
                     mDatabase.child("users").child(user.getUsername()).setValue(user);
+                    generateGlobalWhiteboards();
                     finish();
                 }
 
@@ -146,6 +148,25 @@ public class PickHouseActivity extends AppCompatActivity {
 
                 }
             });
+        }
+    }
+
+    public void generateGlobalWhiteboards(){
+        ArrayList<String> houseUsers = user.getHouse().getUsers();
+        houseUsers.removeAll(Collections.singleton(null));
+
+        for(int k = 0; k < houseUsers.size(); k++){
+            ArrayList<String> mems = new ArrayList<String>();
+            ArrayList<Message> mess = new ArrayList<Message>();
+
+            if(!houseUsers.get(k).equals(user.getUsername())){
+                mems.add(houseUsers.get(k));
+                mems.add(user.getUsername());
+
+                Whiteboard wb = new Whiteboard(mems, mess, houseUsers.get(k) + " & " + user.getUsername());
+                String databaseRoot = user.getHouse().getName().trim() + " whiteboards";
+                mDatabase.child(databaseRoot).child(wb.getID()).setValue(wb);
+            }
         }
     }
 }

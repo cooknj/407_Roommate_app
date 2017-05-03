@@ -2,23 +2,56 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/paper_background">
 
-    <!-- @TODO dynamically generate with real data -->
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:background="@drawable/back_arrow"
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Back" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:text="Bulletin Board"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textStyle="bold"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="110dp"/>
+    </LinearLayout>
+
+
     <ScrollView
         android:id="@+id/BulletinsScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:scrollbars="none" >
-        <!--
+        android:scrollbars="none"
+        android:paddingTop="50dp"
+        android:paddingBottom="80dp">
+
         <LinearLayout
+            android:id="@+id/innerWheel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp">
-
+            <!--
             <Button
                 android:layout_height="100dp"
                 android:layout_width="fill_parent"
@@ -72,8 +105,9 @@
                 android:drawableRight="@drawable/profile_pic_placeholder"
                 android:text="SAMPLE POST 6"
                 android:textSize="30dp"/>
+                -->
         </LinearLayout>
-        -->
+
 
     </ScrollView>
 
