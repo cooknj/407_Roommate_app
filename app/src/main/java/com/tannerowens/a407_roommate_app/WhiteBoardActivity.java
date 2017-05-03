@@ -19,10 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
-import java.util.Map;
-
-//import static com.tannerowens.a407_roommate_app.R.id.addPost;
 
 public class WhiteBoardActivity extends AppCompatActivity {
 
