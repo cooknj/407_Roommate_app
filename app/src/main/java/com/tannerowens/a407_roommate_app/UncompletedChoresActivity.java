@@ -1,12 +1,15 @@
 package com.tannerowens.a407_roommate_app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,15 +37,42 @@ public class UncompletedChoresActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.uncompleted_chores);
+        boolean valid = true;
 
         mDatabase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roommateapp-a6d3a.firebaseio.com/chores");
         user = (User) getIntent().getSerializableExtra("user");
         house = user.getHouse();
-        user_list = house.getUsers();
+
+        if(house == null) {
+            valid = false;
+            Context context = getApplicationContext();
+            CharSequence text = "Please log into a House first.";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        } else {
+            valid = true;
+            user_list = house.getUsers();
+            if(user_list == null) {
+                valid = false;
+                Context context = getApplicationContext();
+                CharSequence text = "No chores have been assigned yet.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+        }
 
         configureBackButton();
-        updateFromFirebase();
-        displayUncompletedChores();
+
+        if(valid) {
+            updateFromFirebase();
+            displayUncompletedChores();
+        } else finish();
     }
 
     //back button config (back to chores activity)
