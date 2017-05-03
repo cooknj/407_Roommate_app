@@ -84,5 +84,12 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/EventsThisMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="TextView" />
+
 
 </LinearLayout>
