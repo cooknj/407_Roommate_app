@@ -12,7 +12,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseError;
@@ -21,8 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ValueEventListener;
 
-//import static com.tannerowens.a407_roommate_app.R.id.addPost;
-
 public class BulletinBoardActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
@@ -30,7 +27,6 @@ public class BulletinBoardActivity extends AppCompatActivity {
     private User user;
     private House house;
     String bulletinRoot = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,18 +58,6 @@ public class BulletinBoardActivity extends AppCompatActivity {
     }
 
     private void generateBulletinList(String bulletinRoot) {
-        //ScrollView scrollView = (ScrollView) findViewById(R.id.BulletinsScrollView);
-        //final ArrayList<BulletinBoardPost> posts = new ArrayList<>();
-
-        // Create a LinearLayout element
-        //LinearLayout linearLayout = new LinearLayout(this);
-        //linearLayout.setOrientation(LinearLayout.VERTICAL);
-        //LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,);
-        //lp.setMargins(30, 0, 30, 0);
-
-        //String determineBulletinURL = "https://roommateapp-a6d3a.firebaseio.com/bulletins"
-        //DatabaseReference mRef = FirebaseDatabase.getInstance().getReferenceFromUrl
-        // ("https://roommateapp-a6d3a.firebaseio.com/bulletins");
         mDatabase.child(bulletinRoot).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -93,10 +77,10 @@ public class BulletinBoardActivity extends AppCompatActivity {
     }
 
    private void displayBulletinButtons(){
-        LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinsScrollView).findViewById(R.id.innerWheel);
+       LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinsScrollView).findViewById(R.id.innerWheel);
+       linearView.removeAllViews();
         for(int i = 0; i < bulletinList.size(); i++) {
-
-            if (findViewById(i) == null) {
+            if (findViewById(i) == null && bulletinList.get(i) != null) {
                 // Add Buttons
                 Button button = new Button(this);
                 button.setPadding(20, 20, 20, 20);
@@ -114,9 +98,6 @@ public class BulletinBoardActivity extends AppCompatActivity {
                     }
                 });
                 linearView.addView(button);
-
-                // Add the LinearLayout element to the ScrollView
-                //scrollView.addView(linearLayout,lp);
             }
         }
     }
@@ -124,7 +105,6 @@ public class BulletinBoardActivity extends AppCompatActivity {
     private void configureNewPostButton() {
         Button button = (Button) findViewById(R.id.NewPostButton);
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AddBulletinActivity.class);
                 intent.putExtra("user", user);

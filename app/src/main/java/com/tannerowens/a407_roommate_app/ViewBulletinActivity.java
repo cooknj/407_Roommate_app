@@ -168,7 +168,7 @@ public class ViewBulletinActivity  extends AppCompatActivity {
             }
         });
     }
-    //@TODO finalize function
+
     private void addReply (String poster, String content){
         //Create the reply as a message object and add it to the list of replies
         Message newReply = new Message(poster,content);
