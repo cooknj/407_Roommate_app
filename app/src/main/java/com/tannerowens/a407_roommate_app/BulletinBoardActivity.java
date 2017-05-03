@@ -2,7 +2,6 @@ package com.tannerowens.a407_roommate_app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,8 +27,6 @@ public class BulletinBoardActivity extends AppCompatActivity {
     private User user;
     private House house;
     String bulletinRoot = "";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +66,6 @@ public class BulletinBoardActivity extends AppCompatActivity {
                     BulletinBoardPost p = entries.getValue(BulletinBoardPost.class);
                     bulletinList.add(p);
                 }
-
                 displayBulletinButtons();
             }
 
@@ -81,7 +77,7 @@ public class BulletinBoardActivity extends AppCompatActivity {
     }
 
    private void displayBulletinButtons(){
-        LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinsScrollView).findViewById(R.id.innerWheel);
+       LinearLayout linearView = (LinearLayout) findViewById(R.id.BulletinsScrollView).findViewById(R.id.innerWheel);
        linearView.removeAllViews();
         for(int i = 0; i < bulletinList.size(); i++) {
             if (findViewById(i) == null && bulletinList.get(i) != null) {
