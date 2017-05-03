@@ -3,10 +3,6 @@ package com.tannerowens.a407_roommate_app;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by fgtho on 4/8/2017.
- */
-
 public class BulletinBoardPost implements Serializable {
 
     private String title;
@@ -15,10 +11,28 @@ public class BulletinBoardPost implements Serializable {
     private String firebaseID;
     private ArrayList<Message> replies = new ArrayList<>();
 
+    public BulletinBoardPost(){
+    }
+
     public BulletinBoardPost(String title, String owner, String content){
         this.title = title;
         this.owner = owner;
         this.content = content;
+    }
+
+    public BulletinBoardPost(String title, String owner, String content, String id){
+        this.title = title;
+        this.owner = owner;
+        this.content = content;
+        this.firebaseID = id;
+    }
+
+    public BulletinBoardPost(String title, String owner, String content, String id, ArrayList<Message> rs){
+        this.title = title;
+        this.owner = owner;
+        this.content = content;
+        this.firebaseID = id;
+        this.replies = rs;
     }
 
     public void addReply(Message reply){this.replies.add(reply);}

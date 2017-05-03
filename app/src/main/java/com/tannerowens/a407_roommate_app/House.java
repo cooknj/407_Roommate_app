@@ -13,7 +13,7 @@ public class House implements Serializable {
 
     private String name;
     private ArrayList<String> users = new ArrayList<>();
-    //private ArrayLise<Chore> houseChores;
+    //private ArrayList<Chore> houseChores;
 
     public House(){
 

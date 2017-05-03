@@ -36,12 +36,29 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".PickHouseActivity" />
-        <activity android:name=".ViewScheduleEntryActivity"></activity>
+        <activity android:name=".ViewScheduleEntryActivity">
         android:name=".GlobalChoreList"
         android:name=".HouseWrapper"
+        </activity>
 
         <activity android:name=".AddCalendarEventActivity" />
         <activity android:name=".ViewCalendarEventActivity" />
+
+        <activity android:name=".BulletinBoardActivity"
+            android:label="RoomMate"/>
+        <activity android:name=".ViewBulletinActivity"
+            android:label="RoomMate"/>
+        <activity android:name=".AddBulletinActivity"
+            android:label="RoomMate"/>
+
+        <activity android:name=".WhiteBoardActivity"
+            android:label="RoomMate"/>
+        <activity android:name=".ViewBoardActivity"
+            android:label="RoomMate"/>
+
+        <activity android:name=".BillsActivity"
+            android:label="RoomMate"/>
+
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
